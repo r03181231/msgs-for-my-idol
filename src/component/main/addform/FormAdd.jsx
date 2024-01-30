@@ -1,3 +1,4 @@
+import Button from "component/common/Button";
 import UseInputs from "component/common/UseInputs";
 import React from "react";
 import { v4 as randomId } from "uuid";
@@ -39,7 +40,7 @@ const FormAdd = () => {
         />
       </div>
       <div>
-        <button>등록</button>
+        <Button name={"등록"} />
       </div>
     </form>
   );

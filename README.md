@@ -5,7 +5,7 @@ Props Drilling → Context API → Redux 순으로 각각 별도의 브랜치
 
 ## 필수 구현 사항
 - [ ] 팬레터 CRUD 구현 (작성, 조회, 수정, 삭제)
-- [ ] 아티스트별 게시물 조회 기능 구현 (Home - Read)
+- [x] 아티스트별 게시물 조회 기능 구현 (Home - Read)
 - [ ] 원하는 아티스트에게 팬레터 등록 구현 (Home - Create)
 - [ ] 팬레터 상세 화면 구현 (Detail - Read)
 - [ ] 상세화면에서 팬레터 내용 수정 구현 (Detail - Update)

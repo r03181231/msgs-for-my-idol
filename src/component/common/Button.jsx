@@ -26,4 +26,5 @@ const NormalButton = styled.button`
   color: ${(style) => style.color || "white"};
 
   font-size: 1.2rem;
+  cursor: pointer;
 `;

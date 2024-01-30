@@ -13,13 +13,13 @@ Props Drilling → Context API → Redux 순으로 각각 별도의 브랜치
 
 > **필수 요구 사항!  아래 내용을 꼭 지켜면서 구현해 주세요!**
 > 
-- [ ]  styled-components 를 이용하여 스타일링
+- [x]  styled-components 를 이용하여 스타일링
     - 인라인 스타일링이나 일반 css 파일을 이용한 스타일링 방식 지양 (이번 과제 한정)
     - 모든 태그를 styled-components 화 할 필요는 없으나 스타일링이 들어가는 경우는 styled-components 화 할 것
-- [ ]  전역 스타일에 reset.css 를 적용해주고 box-sizing이 border-box가 되도록 설정
-- [ ]  styled-components에 props를 넘김으로 인한 조건부 스타일링 적용
+- [x]  전역 스타일에 reset.css 를 적용해주고 box-sizing이 border-box가 되도록 설정
+- [x]  styled-components에 props를 넘김으로 인한 조건부 스타일링 적용
     - 아티스트 선택탭에 적용해 보세요
-- [ ]  팬레터 등록 시 id는 uuid 라이브러리를 이용
+- [x]  팬레터 등록 시 id는 uuid 라이브러리를 이용
     
     https://www.npmjs.com/package//uuid
 

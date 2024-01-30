@@ -1,14 +1,24 @@
 import React from "react";
 import * as S from "./StyledTabMenu";
 
-const TabMenu = () => {
+const TabMenu = ({ tabData, setTabName, setOriginValue }) => {
+  const onClickTabChange = (tabInfomation) => {
+    const { writedTo } = tabInfomation;
+    setTabName(tabInfomation);
+    setOriginValue((prevItem) => [{ ...prevItem, writedTo }]);
+  };
+
   return (
     <S.Nav>
       <S.UlArtistName>
-        <li>정승환</li>
-        <li>권진아</li>
-        <li>샘킴</li>
-        <li>권진아</li>
+        {tabData.map((sortTab) => {
+          const { tabNum, writedTo } = sortTab;
+          return (
+            <li key={tabNum} onClick={() => onClickTabChange(sortTab)}>
+              {writedTo}
+            </li>
+          );
+        })}
       </S.UlArtistName>
     </S.Nav>
   );

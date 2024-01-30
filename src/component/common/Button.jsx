@@ -13,7 +13,14 @@ export default Button;
 
 const NormalButton = styled.button`
   background-color: ${(style) => style.bgc || "#333"};
-  padding: 0.4rem 1rem;
+  padding: ${(style) =>
+    style.pd
+      ? style.pd
+          .split(", ")
+          .map((value) => `${value}rem`)
+          .join(" ")
+      : "0.4rem 1rem"};
+  /* padding: 0.4rem 1rem; */
 
   border: none;
   border-radius: ${(style) =>

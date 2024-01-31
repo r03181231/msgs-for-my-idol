@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 const FormSelect = ({ tabData, addValue, setAddValue }) => {
   // console.log(addValue);
 

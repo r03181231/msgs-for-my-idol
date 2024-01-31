@@ -2,7 +2,7 @@ import Button from "component/common/Button";
 import React, { useEffect, useRef } from "react";
 import { v4 as randomId } from "uuid";
 import FormSelect from "../formSelect/FormSelect";
-import dataBase from "fakeData.json";
+import dataBase from "../../../../shared/fakeData.json";
 import useInputs from "component/common/useInputs";
 
 const FormAdd = ({ tabName, tabData, setOriginValue, blankPattern, time }) => {

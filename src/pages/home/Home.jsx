@@ -3,11 +3,10 @@ import * as S from "./StyledHome.jsx";
 import HeadContents from "component/header/headContents/HeadContents.jsx";
 import CardList from "component/main/cardList/CardList.jsx";
 import FormAdd from "component/main/addform/formAdd/FormAdd.jsx";
-import { v4 as randomId } from "uuid";
-import UseInputs from "component/common/UseInputs.jsx";
+import useInputs from "component/common/useInputs.jsx";
+// import { v4 as randomId } from "uuid";
 
 const Home = () => {
-  let [time, setTime] = useState(new Date());
   const tabData = [
     {
       tabNum: 1,
@@ -26,17 +25,16 @@ const Home = () => {
       writedTo: "이진아",
     },
   ];
-  const [tabName, setTabName] = useState(tabData[0]);
-
-  const [originValue, setOriginValue, onChange, reset] = UseInputs({
-    id: randomId(),
-    nickname: "나나",
-    avatar: "../../../../assets/images/user-defult-avatar.png",
-    content: "어어그래",
-    writedTo: tabName.writedTo,
-    createdAt: time,
-  });
   const blankPattern = /^\s+|\s+$/g;
+  let [time, setTime] = useState(new Date());
+
+  const [tabName, setTabName] = useState(tabData[0]);
+  console.log(tabName.writedTo);
+  // const normalAvataUrl = "../../../../assets/images/anthena-angels.png";
+  const [originValue, setOriginValue, onChange, reset] = useInputs([]);
+  const filterWritedTo = (writedTo) => {
+    return originValue.filter((originItem) => originItem.writedTo === writedTo);
+  };
 
   return (
     <S.Layout>
@@ -47,13 +45,28 @@ const Home = () => {
         setOriginValue={setOriginValue}
       />
       <FormAdd
-        setTabName={setTabName}
+        tabName={tabName}
         originValue={originValue}
+        tabData={tabData}
         setOriginValue={setOriginValue}
         blankPattern={blankPattern}
         time={time}
       />
-      <CardList originValue={originValue} tabData={tabData} tabName={tabName} />
+
+      {tabData.map((tabInfo) => {
+        const { tabNum, writedTo } = tabInfo;
+        return (
+          tabName.writedTo === writedTo && (
+            <CardList
+              key={tabNum}
+              originValue={filterWritedTo(writedTo)}
+              setOriginValue={setOriginValue}
+              tabName={tabName}
+            />
+          )
+        );
+      })}
+      {/* tab에 따라 보여주는 컴포넌트 */}
     </S.Layout>
   );
 };

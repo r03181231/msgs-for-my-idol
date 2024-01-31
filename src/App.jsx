@@ -1,14 +1,13 @@
-import GlobalStyle from "./GlobalStyle";
+import GlobalStyle from "GlobalStyle";
+import Router from "../src/shared/Router";
 
-import Home from "./pages/home/Home";
-
-function App() {
+const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Home />
+      <Router />
     </>
   );
-}
+};
 
 export default App;

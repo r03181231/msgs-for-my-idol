@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-const UseInputs = (initialForm) => {
+const useInputs = (initialForm) => {
   const [form, setForm] = useState(initialForm);
 
   //onChange
@@ -13,4 +13,4 @@ const UseInputs = (initialForm) => {
   return [form, setForm, onChange, reset];
 };
 
-export default UseInputs;
+export default useInputs;

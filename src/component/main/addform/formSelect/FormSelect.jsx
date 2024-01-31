@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 
-const FormSelect = (setAddValue) => {
-  const [optionValue, setOptionValue] = useState("정승환");
+const FormSelect = ({ tabData, addValue, setAddValue }) => {
+  // console.log(addValue);
+
+  const { writedTo } = addValue;
   const optionOrder = (e) => {
-    setOptionValue(e.target.value);
-    // setAddValue((prev) => [{ ...prev, writedTo: optionValue }]);
+    setAddValue((prev) => {
+      return { ...prev, writedTo: e.target.value };
+    });
   };
   return (
     <select
-      name="optionName"
-      key={optionValue}
-      value={optionValue}
+      name="writedTo"
+      value={writedTo}
+      key={writedTo}
       onChange={optionOrder}
     >
-      {
-        <>
-          <option value="정승환">정승환</option>
-          <option value="권진아">권진아</option>
-          <option value="샘킴">샘킴</option>
-          <option value="이진아">이진아</option>
-        </>
-      }
+      {tabData.map((optionWriteTo) => {
+        const { tabNum, writedTo } = optionWriteTo;
+        return (
+          <option key={tabNum} value={writedTo}>
+            {writedTo}
+          </option>
+        );
+      })}
     </select>
   );
 };

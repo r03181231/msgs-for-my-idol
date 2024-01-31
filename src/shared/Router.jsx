@@ -1,17 +1,20 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "Home";
 import Detail from "../pages/detail/Detail";
+import GlobalStyle from "GlobalStyle";
+import Home from "../pages/home/Home";
 
-function Router() {
+const Router = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="detail" element={<Detail />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="detail" element={<Detail />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
-}
+};
 
 export default Router;

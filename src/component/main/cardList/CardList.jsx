@@ -1,20 +1,23 @@
 import React from "react";
-import dataBase from "../../../fakeData.json";
-const CardList = ({ tabName }) => {
-  const { tabNum, writedTo } = tabName;
+import dataBase from "fakeData.json";
+import { Link } from "react-router-dom";
+const CardList = ({ originValue, tabName }) => {
+  const { writedTo } = tabName; //state에 따라
   const dummyData = dataBase;
-  console.log(dummyData[0].writedTo);
-  console.log(tabName);
-  const filterWriteTo = dummyData.filter(
-    (receiver) => receiver.writedTo === writedTo
+  const filterDummy = dummyData.filter((dummy) => dummy.writedTo === writedTo);
+  const filterOrigin = originValue.filter(
+    (origin) => origin.writedTo === writedTo
   );
+  console.log(filterOrigin);
+  const originNdDummy = [...originValue, ...filterDummy];
+  console.log(originNdDummy);
   return (
     <section>
       <div>{writedTo}의 CardList</div>
-      {filterWriteTo.map((data) => {
-        const { id, avatar, content, nickname, writedTo, createdAt } = data;
-
+      {originNdDummy.map((data) => {
+        const { id, avatar, content, nickname, createdAt } = data;
         return (
+          // <Link to="`/datail/:{id}`">
           <div key={id}>
             <img src={avatar} alt="기본이미지" />
             <div>
@@ -32,6 +35,7 @@ const CardList = ({ tabName }) => {
               <p>{content}</p>
             </div>
           </div>
+          // </Link>
         );
       })}
     </section>

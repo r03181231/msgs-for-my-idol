@@ -3,9 +3,10 @@ import * as S from "./StyledTabMenu";
 
 const TabMenu = ({ tabData, setTabName, setOriginValue }) => {
   const onClickTabChange = (tabInfomation) => {
-    const { writedTo } = tabInfomation;
+    // const { writedTo } = tabInfomation; //원인
     setTabName(tabInfomation);
-    setOriginValue((prevItem) => [{ ...prevItem, writedTo }]);
+    // 와 오류의 대부분을 담당하던 아이...
+    // setOriginValue((prevItem) => [{ ...prevItem, writedTo }]); //원인
   };
 
   return (

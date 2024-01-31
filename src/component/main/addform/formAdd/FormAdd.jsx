@@ -1,35 +1,34 @@
 import Button from "component/common/Button";
-import UseInputs from "component/common/UseInputs";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { v4 as randomId } from "uuid";
 import FormSelect from "../formSelect/FormSelect";
+import dataBase from "fakeData.json";
+import useInputs from "component/common/useInputs";
 
-const FormAdd = ({
-  setTabName,
-  originValue,
-  setOriginValue,
-  blankPattern,
-  time,
-}) => {
+const FormAdd = ({ tabName, tabData, setOriginValue, blankPattern, time }) => {
   const nicknameRef = useRef(null);
   const contentRef = useRef(null);
+  const dummyData = dataBase;
   const normalAvataUrl = "../../../../assets/images/anthena-angels.png";
-  const [addValue, setAddValue, onChange, reset] = UseInputs({
+  const [addValue, setAddValue, onChange, reset] = useInputs({
     id: randomId(),
     nickname: "",
     avatar: normalAvataUrl,
     content: "",
-    writedTo: "",
+    writedTo: tabName.writedTo,
     createdAt: time,
   });
 
-  const { id, nickname, avatar, content, writedTo, createdAt } = addValue;
+  const { nickname, content, writedTo } = addValue;
+  console.log(writedTo);
   useEffect(() => {
     nicknameRef.current.focus();
   }, []);
 
+  // console.log(addValue);
   const onAddSubmit = (e) => {
     e.preventDefault();
+
     const nicknameBlank = nickname.replace(blankPattern, "");
     const contentBlank = content.replace(blankPattern, "");
 
@@ -50,9 +49,10 @@ const FormAdd = ({
       return;
     }
 
-    console.log(addValue);
+    setOriginValue((prevValue) => [addValue, ...prevValue]);
 
     reset();
+    nicknameRef.current.focus();
   };
 
   return (
@@ -85,9 +85,10 @@ const FormAdd = ({
           />
         </div>
         <FormSelect
+          tabData={tabData}
+          onChange={onChange}
+          addValue={addValue}
           setAddValue={setAddValue}
-          setTabName={setTabName}
-          setOriginValue={setOriginValue}
         />
         <div>
           <Button name={"등록"} />

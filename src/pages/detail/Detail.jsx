@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import dataBase from "../../shared/fakeData.json";
 import Button from "component/common/Button";
-import useInputs from "component/common/useInputs";
+import EditDetail from "pages/editDetail/EditDetail";
 
 const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const locationData = useLocation();
-  console.log(locationData);
-  const originData = locationData.state.originValue;
-  console.log(originData);
-  const dummyData = dataBase;
-  const filterDummy = dummyData.filter((data) => data.id === id);
-  const [originValue, setOriginValue, onChange, reset] = useInputs([]);
+  const thisCardWritedTo = locationData.state.tabName.writedTo;
+  const currentTabData = JSON.parse(localStorage.getItem(thisCardWritedTo));
+  console.log(currentTabData);
+  const filterThisCard = currentTabData.filter(
+    (data) => data.id === id && data.writedTo === thisCardWritedTo
+  );
+  const [isEdit, setIsEdit] = useState(false); // 수정 상태 , 저장
+
+  const onEdit = () => {
+    setIsEdit(true);
+  };
 
   const onDelete = (clickId) => {
-    console.log(clickId);
     // 삭제 유효성
     if (window.confirm("삭제하시겠습니까?") === true) {
       alert("삭제되었습니다.");
@@ -24,51 +27,53 @@ const Detail = () => {
       alert("삭제를 취소하셨습니다.");
       return;
     }
-    //  setTodoInputs((prevTodoInputs) =>
-    //    prevTodoInputs.filter((stayTodo) => stayTodo.id !== clickId)
-    //  );
+    if (filterThisCard) {
+      const dataArr = currentTabData.filter(
+        (stayTodo) => stayTodo.id !== clickId
+      );
+      console.log(dataArr);
+      localStorage.setItem(thisCardWritedTo, JSON.stringify(dataArr));
+    }
+    navigate("/", { replace: true });
   };
-  const trigger = () => {
-    navigate(
-      "/",
-      { replace: true },
-      {
-        state: { onDelete },
-      }
-    );
+  const moveOriginPage = () => {
+    navigate("/", { replace: true });
   };
 
   return (
     <>
-      {filterDummy.map((filterData) => {
+      {filterThisCard.map((filterData) => {
         const { id, avatar, nickname, writedTo, content, createdAt } =
           filterData;
         return (
           <div key={id}>
-            <button onClick={() => trigger()}>홈버튼</button>
-            <div>
-              <img src={avatar} alt="dummyimage" />
-              <ul>
-                <li>{nickname}</li>
-                <div>
-                  To : <span>{writedTo}</span>
-                </div>
-                <p>
-                  {new Date(createdAt).toLocaleDateString("ko-KR", {
-                    year: "2-digit",
-                    month: "2-digit",
-                    day: "2-digit",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit",
-                  })}
-                </p>
-              </ul>
-
-              <p>{content}</p>
-              <Button name={"수정"} />
-              <Button name={"삭제"} onClick={() => onDelete(id)} />
-            </div>
+            <Button name={"홈버튼"} onClick={() => moveOriginPage()} />
+            {!isEdit ? (
+              <div>
+                <img src={avatar} alt="dummyimage" />
+                <ul>
+                  <li>{nickname}</li>
+                  <div>
+                    To : <span>{writedTo}</span>
+                  </div>
+                  <p>
+                    {new Date(createdAt).toLocaleDateString("ko-KR", {
+                      year: "2-digit",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    })}
+                  </p>
+                </ul>
+                <p>{content}</p>
+                <Button name={"수정"} onClick={onEdit} />
+                <Button name={"삭제"} onClick={() => onDelete(id)} />
+              </div>
+            ) : (
+              <EditDetail setIsEdit={setIsEdit} filterData={filterData} />
+            )}
           </div>
         );
       })}

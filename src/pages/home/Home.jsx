@@ -4,9 +4,10 @@ import HeadContents from "component/header/headContents/HeadContents.jsx";
 import CardList from "component/main/cardList/CardList.jsx";
 import FormAdd from "component/main/addform/formAdd/FormAdd.jsx";
 import useInputs from "component/common/useInputs.jsx";
-// import { v4 as randomId } from "uuid";
+import dataBase from "../../../src/shared/fakeData.json";
 
 const Home = () => {
+  const dummyData = dataBase;
   const tabData = [
     {
       tabNum: 1,
@@ -26,12 +27,14 @@ const Home = () => {
     },
   ];
   const blankPattern = /^\s+|\s+$/g;
-  let [time, setTime] = useState(new Date());
-
+  let [time, setTime] = useState(new Date().toISOString());
   const [tabName, setTabName] = useState(tabData[0]);
   console.log(tabName.writedTo);
-  // const normalAvataUrl = "../../../../assets/images/anthena-angels.png";
-  const [originValue, setOriginValue, onChange, reset] = useInputs([]);
+  const filterDummyData = dummyData.filter(
+    (data) => data.writedTo === tabName.writedTo
+  );
+
+  const [originValue, setOriginValue, onChange, reset] = useInputs(dummyData);
   const filterWritedTo = (writedTo) => {
     return originValue.filter((originItem) => originItem.writedTo === writedTo);
   };

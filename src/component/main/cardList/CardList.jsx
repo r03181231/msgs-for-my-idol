@@ -1,30 +1,26 @@
-import React from "react";
-import dataBase from "../../../shared/fakeData.json";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CardList = ({ originValue, setOriginValue, tabName }) => {
   console.log(originValue);
-  const navigate = useNavigate();
-  const locationData = useLocation();
-  console.log(locationData);
-  const { writedTo } = tabName; //state에 따라
-  const dummyData = dataBase;
-  const filterDummy = dummyData.filter((dummy) => dummy.writedTo === writedTo);
-  const filterOrigin = originValue.filter(
-    (origin) => origin.writedTo === writedTo
-  );
-  console.log(filterOrigin);
-  const originNdDummy = [...originValue, ...filterDummy];
-  console.log(originNdDummy);
 
-  const triggerCard = (clickId) => {
+  const navigate = useNavigate();
+  const { writedTo } = tabName; //state에 따라
+  const storageItems = JSON.parse(localStorage.getItem(writedTo));
+  useEffect(() => {
+    if (storageItems) {
+      setOriginValue([...storageItems]);
+    }
+  }, []);
+
+  const moveDetailPage = (clickId) => {
+    console.log(`detail/${clickId}`);
     navigate(
       `detail/${clickId}`,
       {
         state: {
-          tabName: tabName,
-          originNdDummy: originNdDummy,
-          originValue: originValue,
+          tabName,
+          clickId,
         },
       },
       { replace: true }
@@ -34,14 +30,23 @@ const CardList = ({ originValue, setOriginValue, tabName }) => {
   return (
     <section>
       <div>{writedTo}의 CardList</div>
-      {originNdDummy.map((data) => {
+      {originValue.map((data) => {
         const { id, avatar, content, nickname, createdAt } = data;
         return (
           <section key={id}>
             {/* <Link to={`datail/${id}`}> */}
-            <div onClick={(e) => triggerCard(id)}>
+            <div onClick={() => moveDetailPage(id)}>
               <div>
-                <img src={avatar} alt="기본이미지" />
+                <img
+                  src={avatar}
+                  alt="기본이미지"
+                  style={{
+                    width: "80px",
+                    height: "80px",
+                    objectFit: "cover",
+                    borderRadius: "50rem",
+                  }}
+                />
                 <div>
                   <p>{nickname}</p>
                   <p>

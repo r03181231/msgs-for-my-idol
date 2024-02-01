@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import * as S from "./StyleCardList";
 
 const CardList = ({ originValue, setOriginValue, tabName }) => {
-  console.log(originValue);
-
   const navigate = useNavigate();
   const { writedTo } = tabName; //state에 따라
-  const storageItems = JSON.parse(localStorage.getItem(writedTo));
+  const storageItems = JSON.parse(localStorage.getItem(writedTo)) || [];
+  console.log(storageItems);
   useEffect(() => {
     if (storageItems) {
       setOriginValue([...storageItems]);
@@ -14,7 +14,6 @@ const CardList = ({ originValue, setOriginValue, tabName }) => {
   }, []);
 
   const moveDetailPage = (clickId) => {
-    console.log(`detail/${clickId}`);
     navigate(
       `detail/${clickId}`,
       {
@@ -29,12 +28,10 @@ const CardList = ({ originValue, setOriginValue, tabName }) => {
 
   return (
     <section>
-      <div>{writedTo}의 CardList</div>
-      {originValue.map((data) => {
+      {storageItems.map((data) => {
         const { id, avatar, content, nickname, createdAt } = data;
         return (
           <section key={id}>
-            {/* <Link to={`datail/${id}`}> */}
             <div onClick={() => moveDetailPage(id)}>
               <div>
                 <img
@@ -59,13 +56,21 @@ const CardList = ({ originValue, setOriginValue, tabName }) => {
                       second: "2-digit",
                     })}
                   </p>
-                  <p>{content}</p>
+                  <S.contentP>{content}</S.contentP>
                 </div>
               </div>
             </div>
           </section>
         );
       })}
+      {storageItems.length === 0 ? (
+        <div>
+          <p>
+            {writedTo}님에게 남겨진 팬레터가 없습니다. 첫 번째 팬레터의 주인공이
+            되주세요!
+          </p>
+        </div>
+      ) : null}
     </section>
   );
 };

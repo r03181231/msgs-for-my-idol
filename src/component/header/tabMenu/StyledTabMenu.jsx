@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Nav = styled.nav`
   display: flex;
@@ -20,17 +20,24 @@ export const UlArtistName = styled.ul`
 
   gap: 10px;
   /* 가수이름 */
-  li {
-    background-color: #333;
-    padding: 10px;
-    border-radius: 0.6rem;
+`;
 
-    color: white;
-    cursor: pointer;
+export const Li = styled.li`
+  background-color: #333;
+  padding: 10px;
 
-    &:active,
-    &:focus {
-      background-color: gray;
-    }
+  border-radius: 0.6rem;
+  color: white;
+  ${(props) =>
+    props.isActive &&
+    css`
+      background-color: #f5f593;
+      color: #333;
+    `}
+  &:focus {
+    background-color: gray;
+  }
+  &:active {
+    background-color: gray;
   }
 `;

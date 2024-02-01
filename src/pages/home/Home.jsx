@@ -8,6 +8,7 @@ import dataBase from "../../../src/shared/fakeData.json";
 
 const Home = () => {
   const dummyData = dataBase;
+  console.log(dummyData);
   const tabData = [
     {
       tabNum: 1,
@@ -30,46 +31,35 @@ const Home = () => {
   let [time, setTime] = useState(new Date().toISOString());
   const [tabName, setTabName] = useState(tabData[0]);
   console.log(tabName.writedTo);
-  const filterDummyData = dummyData.filter(
-    (data) => data.writedTo === tabName.writedTo
+  const writorName = tabName.writedTo;
+  const [originValue, setOriginValue, onChange, reset] = useInputs(
+    ...dummyData
   );
-
-  const [originValue, setOriginValue, onChange, reset] = useInputs(dummyData);
-  const filterWritedTo = (writedTo) => {
-    return originValue.filter((originItem) => originItem.writedTo === writedTo);
-  };
+  console.log(originValue);
+  const filterDummy = dummyData.filter(
+    (stayData) => stayData.writedTo === tabName.writedTo
+  );
+  // localStorage.setItem(writorName, JSON.stringify(filterDummy));
 
   return (
     <S.Layout>
       {/* tabNum, writeTo */}
-      <HeadContents
-        setTabName={setTabName}
-        tabData={tabData}
-        setOriginValue={setOriginValue}
-      />
+      <HeadContents setTabName={setTabName} tabData={tabData} />
       <FormAdd
+        writorName={writorName}
         tabName={tabName}
-        originValue={originValue}
         tabData={tabData}
+        originValue={originValue}
         setOriginValue={setOriginValue}
         blankPattern={blankPattern}
         time={time}
       />
-
-      {tabData.map((tabInfo) => {
-        const { tabNum, writedTo } = tabInfo;
-        return (
-          tabName.writedTo === writedTo && (
-            <CardList
-              key={tabNum}
-              originValue={filterWritedTo(writedTo)}
-              setOriginValue={setOriginValue}
-              tabName={tabName}
-            />
-          )
-        );
-      })}
       {/* tab에 따라 보여주는 컴포넌트 */}
+      <CardList
+        setOriginValue={setOriginValue}
+        tabName={tabName}
+        originValue={originValue}
+      />
     </S.Layout>
   );
 };

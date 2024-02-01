@@ -11,10 +11,11 @@ export const Header = styled.header`
 
   border: 1px solid gray;
 
-  background-image: url("../../../assets/images/anthena-angels.png");
+  background-image: url("https://lh7-us.googleusercontent.com/oEaLirMozS3UxdsQGllaE5qf8kYvZklDDLMO58ANP3uRh2ZAy9FJNzIKQ4_FzIRhMzXovU4Wxx24RrZKvoGzQZiVbs-vptgfTBVtFirqWjMLgjk1EXt5l-EBCtyyFNH3FMDSgm3DoM3fAy2dCCFkAXE");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  object-fit: cover;
 
   gap: 20px;
 

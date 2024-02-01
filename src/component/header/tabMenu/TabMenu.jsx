@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./StyledTabMenu";
 
-const TabMenu = ({ tabData, setTabName, setOriginValue }) => {
+const TabMenu = ({ tabData, setTabName }) => {
+  const [activeTab, setActiveTab] = useState(tabData[0]);
   const onClickTabChange = (tabInfomation) => {
-    // const { writedTo } = tabInfomation; //원인
     setTabName(tabInfomation);
-    // 와 오류의 대부분을 담당하던 아이...
-    // setOriginValue((prevItem) => [{ ...prevItem, writedTo }]); //원인
+    setActiveTab(tabInfomation);
   };
 
   return (
@@ -15,9 +14,13 @@ const TabMenu = ({ tabData, setTabName, setOriginValue }) => {
         {tabData.map((sortTab) => {
           const { tabNum, writedTo } = sortTab;
           return (
-            <li key={tabNum} onClick={() => onClickTabChange(sortTab)}>
+            <S.Li
+              $isactive={activeTab.writedTo === writedTo ? "true" : "false"}
+              key={tabNum}
+              onClick={() => onClickTabChange(sortTab)}
+            >
               {writedTo}
-            </li>
+            </S.Li>
           );
         })}
       </S.UlArtistName>

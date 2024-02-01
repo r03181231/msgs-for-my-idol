@@ -2,10 +2,11 @@ import Button from "component/common/Button";
 import React, { useEffect, useRef } from "react";
 import { v4 as randomId } from "uuid";
 import FormSelect from "../formSelect/FormSelect";
-import dataBase from "../../../../shared/fakeData.json";
 import useInputs from "component/common/useInputs";
+import dummy from "../../../../shared/fakeData.json";
 
 const FormAdd = ({
+  writorName,
   tabName,
   tabData,
   originValue,
@@ -13,11 +14,10 @@ const FormAdd = ({
   blankPattern,
   time,
 }) => {
-  const nicknameRef = useRef(null);
-  const contentRef = useRef(null);
-
   const normalAvataUrl =
     "https://lh7-us.googleusercontent.com/MyS-PhOT-AvaQtCYXsr0oQPxakqvdc-s-QFcNZmCwd19fbYditWA_IwxeepE78dANxt04nEws75hrFfmqNuhJLx2EQxy_RSe8x6M7LcHGVjhzEkSpREFDhWljam2mdGNxes5xqoxP1sZpYijy3nTTXU";
+  const nicknameRef = useRef(null);
+  const contentRef = useRef(null);
   const [addValue, setAddValue, onChange, reset] = useInputs({
     id: randomId(),
     nickname: "",
@@ -27,13 +27,18 @@ const FormAdd = ({
     createdAt: time,
   });
   const { nickname, content, writedTo } = addValue;
+  const filterDummy = dummy.filter(
+    (stayDummy) => stayDummy.writedTo === tabName.writedTo
+  );
+
+  // input 유효성
   const nicknameBlank = nickname.replace(blankPattern, "");
   const contentBlank = content.replace(blankPattern, "");
-
+  // input 포커스
   useEffect(() => {
     nicknameRef.current.focus();
   }, []);
-
+  // 추가
   const onAddSubmit = (e) => {
     e.preventDefault();
 
@@ -53,13 +58,17 @@ const FormAdd = ({
       contentRef.current.focus();
       return;
     }
+
     setOriginValue((prevValue) => {
-      const dataArr = [];
-      dataArr.push(addValue, ...prevValue);
-      console.log(dataArr);
-      localStorage.setItem(writedTo, JSON.stringify(dataArr));
-      return [addValue, ...prevValue];
+      const filterPrevValue = prevValue.filter(
+        (prevItem) => prevItem.writedTo === writorName
+      );
+      console.log(filterPrevValue);
+      // localStorage.setItem(writorName, JSON.stringify(dataArr));
+      return [{ ...addValue }, ...filterPrevValue];
     });
+    // const dataArr = [];
+    // dataArr.push({ addValue }, ...filterPrevValue);
 
     reset();
     nicknameRef.current.focus();

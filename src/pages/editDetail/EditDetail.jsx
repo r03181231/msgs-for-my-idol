@@ -46,7 +46,6 @@ const EditDetail = ({ setIsEdit, filterData }) => {
     localStorage.setItem(writedTo, JSON.stringify(editData));
     alert("내용을 수정하셨습니다.");
     setIsEdit(false);
-    console.log(localStorage);
   };
   // // 수정 취소
   const onEditCancel = () => {

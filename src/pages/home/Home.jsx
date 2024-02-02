@@ -3,8 +3,8 @@ import * as S from "./StyledHome.jsx";
 import HeadContents from "component/header/headContents/HeadContents.jsx";
 import CardList from "component/main/cardList/CardList.jsx";
 import FormAdd from "component/main/addform/formAdd/FormAdd.jsx";
-import useInputs from "component/common/useInputs.jsx";
-import dataBase from "../../../src/shared/fakeData.json";
+import dataBase from "../../shared/fakeData.json";
+import useInputs from "component/common/useInput/useInputs.jsx";
 
 const Home = () => {
   const dummyData = dataBase;

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import Button from "component/common/Button";
+
 import EditDetail from "pages/editDetail/EditDetail";
+import Button from "component/common/button/Button";
 
 const Detail = () => {
   const { id } = useParams();

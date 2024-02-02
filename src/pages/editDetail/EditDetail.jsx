@@ -1,5 +1,6 @@
-import Button from "component/common/Button";
-import useInputs from "component/common/useInputs";
+import Button from "component/common/button/Button";
+import useInputs from "component/common/useInput/useInputs";
+
 import React from "react";
 
 const EditDetail = ({ setIsEdit, filterData }) => {

@@ -32,34 +32,41 @@ const Home = () => {
   const [tabName, setTabName] = useState(tabData[0]);
   console.log(tabName.writedTo);
   const writorName = tabName.writedTo;
-  const [originValue, setOriginValue, onChange, reset] = useInputs(
-    ...dummyData
-  );
+  const [originValue, setOriginValue, onChange, reset] = useInputs(dummyData);
   console.log(originValue);
-  const filterDummy = dummyData.filter(
-    (stayData) => stayData.writedTo === tabName.writedTo
-  );
-  // localStorage.setItem(writorName, JSON.stringify(filterDummy));
+
+  const filterWritedTo = (writedTo) => {
+    return originValue.filter((originItem) => originItem.writedTo === writedTo);
+  };
 
   return (
     <S.Layout>
       {/* tabNum, writeTo */}
       <HeadContents setTabName={setTabName} tabData={tabData} />
-      <FormAdd
-        writorName={writorName}
-        tabName={tabName}
-        tabData={tabData}
-        originValue={originValue}
-        setOriginValue={setOriginValue}
-        blankPattern={blankPattern}
-        time={time}
-      />
       {/* tab에 따라 보여주는 컴포넌트 */}
-      <CardList
-        setOriginValue={setOriginValue}
-        tabName={tabName}
-        originValue={originValue}
-      />
+      {tabData.map((tabInfo) => {
+        const { tabNum, writedTo } = tabInfo;
+        return (
+          tabName.writedTo === writedTo && (
+            <div key={tabNum}>
+              <FormAdd
+                writorName={writorName}
+                tabName={tabName}
+                tabData={tabData}
+                setOriginValue={setOriginValue}
+                blankPattern={blankPattern}
+                time={time}
+              />
+              <CardList
+                key={tabNum}
+                originValue={filterWritedTo(writedTo)}
+                setOriginValue={setOriginValue}
+                tabName={tabName}
+              />
+            </div>
+          )
+        );
+      })}
     </S.Layout>
   );
 };

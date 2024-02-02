@@ -28,7 +28,7 @@ const CardList = ({ originValue, setOriginValue, tabName }) => {
 
   return (
     <section>
-      {storageItems.map((data) => {
+      {originValue.map((data) => {
         const { id, avatar, content, nickname, createdAt } = data;
         return (
           <section key={id}>

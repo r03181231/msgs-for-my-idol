@@ -23,21 +23,19 @@ export const UlArtistName = styled.ul`
 `;
 
 export const Li = styled.li`
-  background-color: #333;
+  /* background-color: #333; */
   padding: 10px;
 
   border-radius: 0.6rem;
-  color: white;
-  ${(props) =>
-    props.isActive &&
-    css`
-      background-color: #f5f593;
-      color: #333;
-    `}
-  &:focus {
-    background-color: gray;
+  color: ${({ $isactive, id }) => ($isactive === id ? "#333" : "#fff")};
+  background-color: ${({ $isactive, id }) =>
+    $isactive === id ? "#f5f593" : "#333"};
+
+  &:hover {
+    background-color: #f5f593;
+    color: #333;
   }
-  &:active {
-    background-color: gray;
-  }
+  /* &:active {
+    background-color: #f5f593;
+  } */
 `;

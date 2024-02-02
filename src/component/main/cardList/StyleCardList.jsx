@@ -7,3 +7,10 @@ export const contentP = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
+
+export const AvatarImg = styled.img`
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50rem;
+`;

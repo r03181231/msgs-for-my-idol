@@ -1,19 +1,11 @@
-import Button from "component/common/Button";
+import Button from "component/common/button/Button";
 import React, { useEffect, useRef } from "react";
 import { v4 as randomId } from "uuid";
 import FormSelect from "../formSelect/FormSelect";
-import useInputs from "component/common/useInputs";
+import useInputs from "component/common/useInput/useInputs";
 import dummy from "../../../../shared/fakeData.json";
 
-const FormAdd = ({
-  writorName,
-  tabName,
-  tabData,
-  originValue,
-  setOriginValue,
-  blankPattern,
-  time,
-}) => {
+const FormAdd = ({ tabName, tabData, setOriginValue, blankPattern, time }) => {
   const normalAvataUrl =
     "https://lh7-us.googleusercontent.com/MyS-PhOT-AvaQtCYXsr0oQPxakqvdc-s-QFcNZmCwd19fbYditWA_IwxeepE78dANxt04nEws75hrFfmqNuhJLx2EQxy_RSe8x6M7LcHGVjhzEkSpREFDhWljam2mdGNxes5xqoxP1sZpYijy3nTTXU";
   const nicknameRef = useRef(null);
@@ -27,10 +19,6 @@ const FormAdd = ({
     createdAt: time,
   });
   const { nickname, content, writedTo } = addValue;
-  const filterDummy = dummy.filter(
-    (stayDummy) => stayDummy.writedTo === tabName.writedTo
-  );
-
   // input 유효성
   const nicknameBlank = nickname.replace(blankPattern, "");
   const contentBlank = content.replace(blankPattern, "");
@@ -58,17 +46,15 @@ const FormAdd = ({
       contentRef.current.focus();
       return;
     }
-
+    let dataArr = [];
     setOriginValue((prevValue) => {
       const filterPrevValue = prevValue.filter(
-        (prevItem) => prevItem.writedTo === writorName
+        (prevItem) => prevItem.writedTo === writedTo
       );
-      console.log(filterPrevValue);
-      // localStorage.setItem(writorName, JSON.stringify(dataArr));
+      dataArr.push(addValue, ...filterPrevValue);
+      localStorage.setItem(writedTo, JSON.stringify(dataArr));
       return [{ ...addValue }, ...filterPrevValue];
     });
-    // const dataArr = [];
-    // dataArr.push({ addValue }, ...filterPrevValue);
 
     reset();
     nicknameRef.current.focus();

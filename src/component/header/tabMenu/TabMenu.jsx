@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import * as S from "./StyledTabMenu";
 
-const TabMenu = ({ tabData, setTabName }) => {
+const TabMenu = ({ tabData, setTabName, tabName }) => {
   const [activeTab, setActiveTab] = useState(tabData[0]);
+  console.log(activeTab);
+
   const onClickTabChange = (tabInfomation) => {
     setTabName(tabInfomation);
     setActiveTab(tabInfomation);
@@ -13,9 +15,11 @@ const TabMenu = ({ tabData, setTabName }) => {
       <S.UlArtistName>
         {tabData.map((sortTab) => {
           const { tabNum, writedTo } = sortTab;
+
           return (
             <S.Li
-              $isactive={activeTab.writedTo === writedTo ? "true" : "false"}
+              id={tabNum}
+              $isactive={activeTab.tabNum}
               key={tabNum}
               onClick={() => onClickTabChange(sortTab)}
             >

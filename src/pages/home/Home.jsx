@@ -4,17 +4,20 @@ import HeadContents from "component/header/headContents/HeadContents.jsx";
 import CardList from "component/main/cardList/CardList.jsx";
 import FormAdd from "component/main/addform/formAdd/FormAdd.jsx";
 import { LetterContext } from "context/LetterContext.js";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const tabData = useSelector((store) => store.tabMenu.tabData);
+  const letterValue = useSelector((store) => store.tabMenu.letterValue);
+
   const data = useContext(LetterContext);
-  const letterValue = data.letterValue; // array
   const setLetterValue = data.setLetterValue;
   const tab = data.tab;
   const setTab = data.setTab;
-  const tabData = data.tabData;
+  // const tabData = data.tabData;
 
   const writeToName = tab.writedTo;
-
+  // 바꿔 볼 부분
   const filterWritedTo = (writedTo) => {
     return letterValue.filter((letterItem) => letterItem.writedTo === writedTo);
   };

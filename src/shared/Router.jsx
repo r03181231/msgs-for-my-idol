@@ -7,29 +7,8 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-            // tabData={tabData}
-            // letterValue={letterValue}
-            // setLetterValue={setLetterValue}
-            // tab={tab}
-            // setTab={setTab}
-            />
-          }
-        />
-        <Route
-          path="detail/:id"
-          element={
-            <Detail
-            // tab={tab}
-            // setTab={setTab}
-            // letterValue={letterValue}
-            // setLetterValue={setLetterValue}
-            />
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="detail/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

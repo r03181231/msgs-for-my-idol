@@ -47,10 +47,11 @@ const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
     }
 
     setLetterValue((prevValue) => {
-      const filterPrevLetterValue = prevValue.filter(
-        (prevItem) => prevItem.writedTo === writedTo
-      );
-      return [{ ...addValue }, ...filterPrevLetterValue];
+      // const filterPrevLetterValue = prevValue.filter(
+      //   (prevItem) => prevItem.writedTo === writedTo
+      // );
+      // console.log(filterPrevLetterValue);
+      return [{ ...addValue }, ...prevValue];
     });
 
     reset();

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./StyleCardList";
 
 const CardList = ({ letterValue, tab }) => {
+  console.log(letterValue);
   const navigate = useNavigate();
   const { writedTo } = tab; //state에 따라
 

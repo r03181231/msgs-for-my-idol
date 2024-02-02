@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as S from "./StyledHome.jsx";
 import HeadContents from "component/header/headContents/HeadContents.jsx";
 import CardList from "component/main/cardList/CardList.jsx";
 import FormAdd from "component/main/addform/formAdd/FormAdd.jsx";
+import { LetterContext } from "context/LetterContext.js";
 
-const Home = ({ letterValue, setLetterValue, tab, setTab, tabData }) => {
-  const blankPattern = /^\s+|\s+$/g;
-  let time = new Date().toISOString();
+const Home = () => {
+  const data = useContext(LetterContext);
+  const letterValue = data.letterValue; // array
+  const setLetterValue = data.setLetterValue;
+  const tab = data.tab;
+  const setTab = data.setTab;
+  const tabData = data.tabData;
 
-  console.log(tab.writedTo);
   const writeToName = tab.writedTo;
 
   const filterWritedTo = (writedTo) => {
@@ -25,14 +29,7 @@ const Home = ({ letterValue, setLetterValue, tab, setTab, tabData }) => {
         return (
           tab.writedTo === writedTo && (
             <div key={tabNum}>
-              <FormAdd
-                writeToName={writeToName}
-                tab={tab}
-                tabData={tabData}
-                setLetterValue={setLetterValue}
-                blankPattern={blankPattern}
-                time={time}
-              />
+              <FormAdd writeToName={writeToName} tab={tab} tabData={tabData} />
               <CardList
                 letterValue={filterWritedTo(writedTo)}
                 setLetterValue={setLetterValue}

@@ -1,9 +1,13 @@
 import Button from "component/common/button/Button";
 import useInputs from "component/common/useInput/useInputs";
+import { LetterContext } from "context/LetterContext";
 
-import React from "react";
+import React, { useContext } from "react";
 
-const EditDetail = ({ setIsEdit, filterData, letterValue, setLetterValue }) => {
+const EditDetail = ({ setIsEdit, filterData }) => {
+  const data = useContext(LetterContext);
+  const letterValue = data.letterValue;
+  const setLetterValue = data.setLetterValue;
   const { id, avatar, nickname, writedTo, content, createdAt } = filterData;
   const [editValue, setEditValue, onChange, reset] = useInputs({
     id,

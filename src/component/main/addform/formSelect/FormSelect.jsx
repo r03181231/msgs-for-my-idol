@@ -1,6 +1,5 @@
+// FormSelect.jsx
 const FormSelect = ({ tabData, addValue, setAddValue }) => {
-  // console.log(addValue);
-
   const { writedTo } = addValue;
   const optionOrder = (e) => {
     setAddValue((prev) => {

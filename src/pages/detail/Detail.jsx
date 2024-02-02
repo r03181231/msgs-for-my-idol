@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+// Detali.js
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+
+import React, { useContext, useState } from "react";
+import { LetterContext } from "context/LetterContext.js";
 
 import EditDetail from "pages/editDetail/EditDetail";
 import Button from "component/common/button/Button";
 
-const Detail = ({ tab, setTab, letterValue, setLetterValue }) => {
+const Detail = () => {
+  const data = useContext(LetterContext);
+  const letterValue = data.letterValue; // array
+  const setLetterValue = data.setLetterValue;
+  const tab = data.tab;
+
   const { id } = useParams();
   const navigate = useNavigate();
   const tabName = tab.writedTo;

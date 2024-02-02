@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useContext } from "react";
+import { LetterContext } from "context/LetterContext";
 import * as S from "./StyledTabMenu";
 
-const TabMenu = ({ tabData, setTab }) => {
+const TabMenu = () => {
+  const data = useContext(LetterContext);
+  const setTab = data.setTab;
+  const tabData = data.tabData;
   const [activeTab, setActiveTab] = useState(tabData[0]);
-  console.log(activeTab);
 
   const onClickTabChange = (tabInfomation) => {
     setTab(tabInfomation);

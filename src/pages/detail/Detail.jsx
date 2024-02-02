@@ -4,17 +4,13 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import EditDetail from "pages/editDetail/EditDetail";
 import Button from "component/common/button/Button";
 
-const Detail = () => {
+const Detail = ({ tab, setTab, letterValue, setLetterValue }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const locationData = useLocation();
-  const thisCardWritedTo = locationData.state.tabName.writedTo;
-  const currentTabData = localStorage.getItem(thisCardWritedTo)
-    ? JSON.parse(localStorage.getItem(thisCardWritedTo))
-    : [];
+  const tabName = tab.writedTo;
 
-  const filterThisCard = currentTabData.filter(
-    (data) => data.id === id && data.writedTo === thisCardWritedTo
+  const filterThisCard = letterValue.filter(
+    (data) => data.id === id && data.writedTo === tabName
   );
 
   const [isEdit, setIsEdit] = useState(false); // 수정 상태 , 저장
@@ -36,10 +32,8 @@ const Detail = () => {
       return;
     }
 
-    const dataArr = currentTabData.filter(
-      (stayTodo) => stayTodo.id !== clickId
-    );
-    localStorage.setItem(thisCardWritedTo, JSON.stringify(dataArr));
+    const dataArr = letterValue.filter((stayTodo) => stayTodo.id !== clickId);
+    setLetterValue(dataArr);
     moveNavigator();
   };
 
@@ -76,7 +70,12 @@ const Detail = () => {
                   <Button name={"삭제"} onClick={() => onDelete(id)} />
                 </div>
               ) : (
-                <EditDetail setIsEdit={setIsEdit} filterData={filterData} />
+                <EditDetail
+                  setIsEdit={setIsEdit}
+                  filterData={filterData}
+                  letterValue={letterValue}
+                  setLetterValue={setLetterValue}
+                />
               )}
             </div>
           );

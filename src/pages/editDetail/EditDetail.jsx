@@ -3,7 +3,7 @@ import useInputs from "component/common/useInput/useInputs";
 
 import React from "react";
 
-const EditDetail = ({ setIsEdit, filterData }) => {
+const EditDetail = ({ setIsEdit, filterData, letterValue, setLetterValue }) => {
   const { id, avatar, nickname, writedTo, content, createdAt } = filterData;
   const [editValue, setEditValue, onChange, reset] = useInputs({
     id,
@@ -31,9 +31,7 @@ const EditDetail = ({ setIsEdit, filterData }) => {
       return;
     }
 
-    const currentTabData = JSON.parse(localStorage.getItem(writedTo));
-
-    const editData = currentTabData.map((prevData) => {
+    const editData = letterValue.map((prevData) => {
       console.log(prevData.id === id);
       if (prevData.id === id) {
         return {
@@ -44,7 +42,7 @@ const EditDetail = ({ setIsEdit, filterData }) => {
       return prevData;
     });
 
-    localStorage.setItem(writedTo, JSON.stringify(editData));
+    setLetterValue(editData);
     alert("내용을 수정하셨습니다.");
     setIsEdit(false);
   };

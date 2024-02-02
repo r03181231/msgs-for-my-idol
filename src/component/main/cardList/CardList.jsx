@@ -1,24 +1,16 @@
-import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./StyleCardList";
 
-const CardList = ({ originValue, setOriginValue, tabName }) => {
+const CardList = ({ letterValue, tab }) => {
   const navigate = useNavigate();
-  const { writedTo } = tabName; //state에 따라
-  const storageItems = JSON.parse(localStorage.getItem(writedTo)) || [];
-  console.log(storageItems);
-  useEffect(() => {
-    if (storageItems) {
-      setOriginValue([...storageItems]);
-    }
-  }, []);
+  const { writedTo } = tab; //state에 따라
 
   const moveDetailPage = (clickId) => {
     navigate(
       `detail/${clickId}`,
       {
         state: {
-          tabName,
+          tab,
           clickId,
         },
       },
@@ -28,13 +20,13 @@ const CardList = ({ originValue, setOriginValue, tabName }) => {
 
   return (
     <section>
-      {originValue.map((data) => {
-        const { id, avatar, content, nickname, createdAt } = data;
+      {letterValue.map((letterData) => {
+        const { id, avatar, content, nickname, createdAt } = letterData;
         return (
           <section key={id}>
             <div onClick={() => moveDetailPage(id)}>
               <div>
-                <img
+                <S.AvatarImg
                   src={avatar}
                   alt="기본이미지"
                   style={{
@@ -63,7 +55,7 @@ const CardList = ({ originValue, setOriginValue, tabName }) => {
           </section>
         );
       })}
-      {storageItems.length === 0 ? (
+      {letterValue.length === 0 ? (
         <div>
           <p>
             {writedTo}님에게 남겨진 팬레터가 없습니다. 첫 번째 팬레터의 주인공이

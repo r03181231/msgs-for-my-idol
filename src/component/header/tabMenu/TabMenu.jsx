@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import * as S from "./StyledTabMenu";
 
-const TabMenu = ({ tabData, setTabName, tabName }) => {
+const TabMenu = ({ tabData, setTab }) => {
   const [activeTab, setActiveTab] = useState(tabData[0]);
   console.log(activeTab);
 
   const onClickTabChange = (tabInfomation) => {
-    setTabName(tabInfomation);
+    setTab(tabInfomation);
     setActiveTab(tabInfomation);
   };
 

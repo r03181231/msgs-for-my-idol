@@ -3,9 +3,8 @@ import React, { useEffect, useRef } from "react";
 import { v4 as randomId } from "uuid";
 import FormSelect from "../formSelect/FormSelect";
 import useInputs from "component/common/useInput/useInputs";
-import dummy from "../../../../shared/fakeData.json";
 
-const FormAdd = ({ tabName, tabData, setOriginValue, blankPattern, time }) => {
+const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
   const normalAvataUrl =
     "https://lh7-us.googleusercontent.com/MyS-PhOT-AvaQtCYXsr0oQPxakqvdc-s-QFcNZmCwd19fbYditWA_IwxeepE78dANxt04nEws75hrFfmqNuhJLx2EQxy_RSe8x6M7LcHGVjhzEkSpREFDhWljam2mdGNxes5xqoxP1sZpYijy3nTTXU";
   const nicknameRef = useRef(null);
@@ -15,7 +14,7 @@ const FormAdd = ({ tabName, tabData, setOriginValue, blankPattern, time }) => {
     nickname: "",
     avatar: normalAvataUrl,
     content: "",
-    writedTo: tabName.writedTo,
+    writedTo: tab.writedTo,
     createdAt: time,
   });
   const { nickname, content, writedTo } = addValue;
@@ -46,14 +45,12 @@ const FormAdd = ({ tabName, tabData, setOriginValue, blankPattern, time }) => {
       contentRef.current.focus();
       return;
     }
-    let dataArr = [];
-    setOriginValue((prevValue) => {
-      const filterPrevValue = prevValue.filter(
+
+    setLetterValue((prevValue) => {
+      const filterPrevLetterValue = prevValue.filter(
         (prevItem) => prevItem.writedTo === writedTo
       );
-      dataArr.push(addValue, ...filterPrevValue);
-      localStorage.setItem(writedTo, JSON.stringify(dataArr));
-      return [{ ...addValue }, ...filterPrevValue];
+      return [{ ...addValue }, ...filterPrevLetterValue];
     });
 
     reset();

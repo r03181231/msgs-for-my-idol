@@ -46,13 +46,7 @@ const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
       return;
     }
 
-    setLetterValue((prevValue) => {
-      // const filterPrevLetterValue = prevValue.filter(
-      //   (prevItem) => prevItem.writedTo === writedTo
-      // );
-      // console.log(filterPrevLetterValue);
-      return [{ ...addValue }, ...prevValue];
-    });
+    setLetterValue((prevValue) => [{ ...addValue }, ...prevValue]);
 
     reset();
     nicknameRef.current.focus();

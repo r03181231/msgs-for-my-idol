@@ -272,8 +272,8 @@ $ yarn start
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/c67d3f92-3d71-488e-9ae7-370fe188a6a2" width="150px" /><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/45335800-4dbe-4eef-84f8-6ca7c691e321" width="150px" align="left"/><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/dc9e98e1-62dc-4fda-89ab-ce6e2f90c56c" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/4b6b4527-f32d-4392-ad52-610e95618ca4" width="150px" /><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/8ac31e57-0a46-45b2-af63-3d16487e9d72" width="150px" align="center"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/4b6b4527-f32d-4392-ad52-610e95618ca4" width="150px" align="left"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/8ac31e57-0a46-45b2-af63-3d16487e9d72" width="150px"/><p>
  
 </div>
 

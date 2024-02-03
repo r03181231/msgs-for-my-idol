@@ -3,25 +3,21 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import React, { useContext, useState } from "react";
 import { LetterContext } from "context/LetterContext.js";
-
 import EditDetail from "pages/editDetail/EditDetail";
 import Button from "component/common/button/Button";
 
 const Detail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const data = useContext(LetterContext);
   const letterValue = data.letterValue; // array
   const setLetterValue = data.setLetterValue;
   const tab = data.tab;
-
-  const { id } = useParams();
-  const navigate = useNavigate();
   const tabName = tab.writedTo;
-
+  const [isEdit, setIsEdit] = useState(false); // 수정 상태 , 저장
   const filterThisCard = letterValue.filter(
     (data) => data.id === id && data.writedTo === tabName
   );
-
-  const [isEdit, setIsEdit] = useState(false); // 수정 상태 , 저장
 
   const moveNavigator = () => {
     navigate("/", { replace: true });

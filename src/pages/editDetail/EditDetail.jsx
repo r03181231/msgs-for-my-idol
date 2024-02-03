@@ -1,8 +1,7 @@
-import Button from "component/common/button/Button";
-import useInputs from "component/common/useInput/useInputs";
-import { LetterContext } from "context/LetterContext";
-
 import React, { useContext } from "react";
+import { LetterContext } from "context/LetterContext";
+import useInputs from "component/common/useInput/useInputs";
+import Button from "component/common/button/Button";
 
 const EditDetail = ({ setIsEdit, filterData }) => {
   const data = useContext(LetterContext);
@@ -17,10 +16,7 @@ const EditDetail = ({ setIsEdit, filterData }) => {
     writedTo,
     createdAt,
   });
-
-  // // 수정 값 할당 변수
   const editValueContent = editValue.content;
-
   // //수정 저장
   const onEditSave = () => {
     //유효성

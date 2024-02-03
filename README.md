@@ -233,7 +233,8 @@ $ yarn start
 
 ### 2. 파일 구조
 
-<br />
+
+---
 
 #### 브랜치 이름 : props-drilling(정식명칭: prop-drilling)
 <div>
@@ -248,6 +249,8 @@ $ yarn start
 
 <br />
 
+---
+
 #### 브랜치 이름 : context
 <div>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/ff083e68-b160-45e1-83de-07b6ead2a608" width="150px" align="left"/><p>
@@ -260,6 +263,8 @@ $ yarn start
 </div>
 
 <br />
+
+---
 
 #### 브랜치 이름 : redux
 <div>

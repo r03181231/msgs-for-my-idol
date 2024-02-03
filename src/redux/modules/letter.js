@@ -72,7 +72,6 @@ const initialState = {
 
 // input : state, action
 const letter = (state = initialState, action) => {
-  console.log("letter-payload=>", action.payload); //{tabNum: 1, writedTo: '정승환'}
   switch (action.type) {
     case SET_TAB:
       return { ...state, tab: action.payload };

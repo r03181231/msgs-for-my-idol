@@ -173,7 +173,6 @@ $ yarn start
 
 
 
-### 브랜치 구조
 
 ### 권장 요구 사항
 - [x]  (1) 프로젝트 셋업
@@ -192,7 +191,7 @@ $ yarn start
   <br />
 
 ## 필수 구현 사항
-- [x] Props Drilling → Context API → Redux 순으로 각각 별도의 브랜치
+
 - [x] 팬레터 CRUD 구현 (작성, 조회, 수정, 삭제)
 - [x] 아티스트별 게시물 조회 기능 구현 (Home - Read)
 - [x] 원하는 아티스트에게 팬레터 등록 구현 (Home - Create)
@@ -224,6 +223,10 @@ $ yarn start
     - query string을 적용해 봅시다. (ex. http://localhost:3000?search=에스파)
     - react-router-dom의 useSearchParams를 이용해 보세요.
 
+<br />
+
+### 브랜치 구조
+- [x] Props Drilling → Context API → Redux 순으로 각각 별도의 브랜치
 
 
 <br />

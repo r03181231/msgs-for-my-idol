@@ -174,9 +174,25 @@ $ yarn start
 
 
 ### 브랜치 구조
-Props Drilling → Context API → Redux 순으로 각각 별도의 브랜치
+
+### 권장 요구 사항
+- [x]  (1) 프로젝트 셋업
+    - CRA boilerplate 로 프로젝트 생성
+    - pages/ , components/ , shared/ , assets/ 폴더 작성 및 필요 컴포넌트 사전 작성
+    - styled-components, react-router-dom 설치
+    - title 변경 (index.html)
+    - jsconfig.json (src 폴더 기준 절대경로 설정)
+    - 제출된 깃헙에는 props-drilling, context, redux 라는 이름의 각각의 브랜치명이 있어야 합니다.
+    - props-drilling 브랜치에서는 context나 redux 없이 useState만으로 상태관리해서 코드를 작성합니다.
+    - props-drilling 으로 코드를 모두 작성 및 커밋을 완료했으면 context 브랜치로 생성 및 이동합니다.
+    - context 브랜치에서는 props-drilling으로 작업한 코드에서 react context API를 사용하여 전역상태를 이용한 코드로 리팩터링합니다.
+    - context 브랜치에서 리팩터링 및 커밋을 완료했으면 redux 브랜치 생성 및 이동합니다.
+    - redux 브랜치에서는 context api로 전역상태를 관리한 코드를 모두 redux 라이브러리를 이용한 코드로 리팩터링합니다.
+
+  <br />
 
 ## 필수 구현 사항
+- [x] Props Drilling → Context API → Redux 순으로 각각 별도의 브랜치
 - [x] 팬레터 CRUD 구현 (작성, 조회, 수정, 삭제)
 - [x] 아티스트별 게시물 조회 기능 구현 (Home - Read)
 - [x] 원하는 아티스트에게 팬레터 등록 구현 (Home - Create)

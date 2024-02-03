@@ -73,6 +73,7 @@ const initialState = {
 // input : state, action
 const letter = (state = initialState, action) => {
   switch (action.type) {
+    // TabMenu
     case SET_TAB:
       return { ...state, tab: action.payload };
     case SET_ACTIVE_TAB:
@@ -81,12 +82,13 @@ const letter = (state = initialState, action) => {
         activeTab: action.payload,
       };
 
-    // Form
+    // FormAdd
     case SET_LETTER_VALUE:
       return {
         ...state,
         letterValue: [action.payload, ...state.letterValue],
       };
+    // EditDetail - edit, delete
     case SET_LETTER_EDIT_DELTETE:
       return {
         ...state,

@@ -240,10 +240,10 @@ $ yarn start
 <div>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/aa3742b3-d294-4490-9a59-6b4a5f66ac54" width="150px" align="left"/><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/7ead0f2d-0891-4410-b782-a7b9d614426b" width="150px"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/c6181b5d-d833-4e17-9899-5f2e78b65a68" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/e397c87c-806b-4ed9-b053-5f7b58a4775e" width="150px" /><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/c6181b5d-d833-4e17-9899-5f2e78b65a68" width="150px" align="left" /><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/e397c87c-806b-4ed9-b053-5f7b58a4775e" width="150px" align="left"/><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/5e8edc28-b407-43cd-adc3-d2dfcd3eb160" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/e071e841-be16-4cfe-aa15-12fe8fe6ca63" width="150px" align="center"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/e071e841-be16-4cfe-aa15-12fe8fe6ca63" width="150px"  align="left"/><p>
  
 </div>
 

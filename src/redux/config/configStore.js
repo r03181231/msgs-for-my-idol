@@ -3,11 +3,9 @@
 import { createStore } from "redux";
 import { combineReducers } from "redux";
 import letter from "../modules/letter.js";
-import tabMenu from "../modules/tab.js";
 
 const rootReducer = combineReducers({
   letter,
-  tabMenu,
 });
 const store = createStore(rootReducer);
 

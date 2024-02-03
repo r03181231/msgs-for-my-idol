@@ -1,19 +1,21 @@
-import Button from "component/common/button/Button";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setLetterValue } from "../../../../redux/modules/letter";
 import { v4 as randomId } from "uuid";
 import FormSelect from "../formSelect/FormSelect";
 import useInputs from "component/common/useInput/useInputs";
-import { LetterContext } from "context/LetterContext";
+import Button from "component/common/button/Button";
 
-const FormAdd = ({ tab, tabData }) => {
-  const data = useContext(LetterContext);
-  const nicknameRef = useRef(null);
-  const contentRef = useRef(null);
-  const setLetterValue = data.setLetterValue;
-  const blankPattern = data.blankPattern;
-  const time = data.time;
+const FormAdd = () => {
   const normalAvataUrl =
     "https://lh7-us.googleusercontent.com/MyS-PhOT-AvaQtCYXsr0oQPxakqvdc-s-QFcNZmCwd19fbYditWA_IwxeepE78dANxt04nEws75hrFfmqNuhJLx2EQxy_RSe8x6M7LcHGVjhzEkSpREFDhWljam2mdGNxes5xqoxP1sZpYijy3nTTXU";
+  const dispatch = useDispatch();
+  const tabData = useSelector((store) => store.letter.tabData);
+  const tab = useSelector((store) => store.letter.tab);
+  let time = new Date().toISOString();
+  const blankPattern = /^\s+|\s+$/g;
+  const nicknameRef = useRef(null);
+  const contentRef = useRef(null);
   const [addValue, setAddValue, onChange, reset] = useInputs({
     id: randomId(),
     nickname: "",
@@ -51,8 +53,7 @@ const FormAdd = ({ tab, tabData }) => {
       return;
     }
 
-    setLetterValue((prevValue) => [{ ...addValue }, ...prevValue]);
-
+    dispatch(setLetterValue(addValue));
     reset();
     nicknameRef.current.focus();
   };

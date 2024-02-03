@@ -1,14 +1,13 @@
-import Button from "component/common/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { setLetterEditDelete } from "../../redux/modules/letter";
 import useInputs from "component/common/useInput/useInputs";
-import { LetterContext } from "context/LetterContext";
-
-import React, { useContext } from "react";
+import Button from "component/common/button/Button";
 
 const EditDetail = ({ setIsEdit, filterData }) => {
-  const data = useContext(LetterContext);
-  const letterValue = data.letterValue;
-  const setLetterValue = data.setLetterValue;
+  const dispatch = useDispatch();
+  const letterValue = useSelector((store) => store.letter.letterValue);
   const { id, avatar, nickname, writedTo, content, createdAt } = filterData;
+
   const [editValue, setEditValue, onChange, reset] = useInputs({
     id,
     nickname,
@@ -17,7 +16,6 @@ const EditDetail = ({ setIsEdit, filterData }) => {
     writedTo,
     createdAt,
   });
-
   // // 수정 값 할당 변수
   const editValueContent = editValue.content;
 
@@ -35,18 +33,17 @@ const EditDetail = ({ setIsEdit, filterData }) => {
       return;
     }
 
-    const editData = letterValue.map((prevData) => {
-      console.log(prevData.id === id);
-      if (prevData.id === id) {
+    const editData = letterValue.map((letter) => {
+      if (letter.id === id) {
         return {
-          ...prevData,
+          ...letter,
           content: editValueContent,
         };
       }
-      return prevData;
+      return letter;
     });
 
-    setLetterValue(editData);
+    dispatch(setLetterEditDelete(editData));
     alert("내용을 수정하셨습니다.");
     setIsEdit(false);
   };
@@ -62,7 +59,9 @@ const EditDetail = ({ setIsEdit, filterData }) => {
       <ul>
         <li>{nickname}</li>
         <div>
-          To : <span>{writedTo}</span>
+          <p>
+            To : <span>{writedTo}</span>
+          </p>
         </div>
         <p>
           {new Date(createdAt).toLocaleDateString("ko-KR", {

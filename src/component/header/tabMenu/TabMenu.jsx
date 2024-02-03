@@ -1,25 +1,15 @@
-import React, { useState } from "react";
-import { useContext } from "react";
-import { LetterContext } from "context/LetterContext";
-import * as S from "./StyledTabMenu";
 import { useDispatch, useSelector } from "react-redux";
-// import { setTab } from "../../../redux/modules/tab";
-// import { setActiveTab, setTab } from "../../../redux/modules/tab";
+import { setActiveTab, setTab } from "../../../redux/modules/letter";
+import * as S from "./StyledTabMenu";
 
 const TabMenu = () => {
   const dispatch = useDispatch();
-  const tabData = useSelector((store) => store.tabMenu.tabData);
-  // const activeTab = useSelector((store) => store.tab.activeTab);
-  const data = useContext(LetterContext);
-  const setTab = data.setTab;
-  const [activeTab, setActiveTab] = useState(tabData[0]);
-  // console.log(activeTab); //{tabNum: 4, writedTo: '이진아'}
+  const tabData = useSelector((store) => store.letter.tabData);
+  const activeTab = useSelector((store) => store.letter.activeTab);
+
   const onClickTabChange = (tabInfomation) => {
-    // console.log(tabInfomation); //{tabNum: 4, writedTo: '이진아'}
-    // dispatch(setTab(tabInfomation));
-    setTab(tabInfomation);
-    setActiveTab(tabInfomation);
-    // dispatch(setActiveTab(tabInfomation));
+    dispatch(setTab(tabInfomation));
+    dispatch(setActiveTab(tabInfomation));
   };
 
   return (

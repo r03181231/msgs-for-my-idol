@@ -1,75 +1,97 @@
+import dummyData from "../../shared/fakeData";
 // counter.js
 
 // action value
-const PLUS_ONE = "plus_one";
-const MINUS_ONE = "minus_one";
-const PLUS_N = "plus_n";
+
+const SET_TAB = "SET_TAB";
+const SET_ACTIVE_TAB = "SET_ACTIVE_TAB";
+const SET_LETTER_VALUE = "SET_LETTER_VALUE";
+const SET_LETTER_EDIT_DELTETE = "SET_LETTER_EDIT_DELTETE";
 
 // action creator : action value를 return하는 함수
-export const plusOne = () => {
+export const setTab = (payload) => {
   return {
-    type: PLUS_ONE,
+    type: SET_TAB,
+    payload,
+  };
+};
+export const setActiveTab = (payload) => {
+  return {
+    type: SET_ACTIVE_TAB,
+    payload,
+  };
+};
+export const setLetterValue = (payload) => {
+  return {
+    type: SET_LETTER_VALUE,
+    payload,
   };
 };
 
-export const minusOne = () => {
+export const setLetterEditDelete = (payload) => {
   return {
-    type: MINUS_ONE,
+    type: SET_LETTER_EDIT_DELTETE,
+    payload,
   };
 };
 
-export const plusN = (payload) => {
-  return {
-    type: PLUS_N,
-    payload: payload, // 3
-  };
-};
-
-// 초기 상태값(state)
-
-const initialState = [
-  {
+const initialState = {
+  tabData: [
+    {
+      tabNum: 1,
+      writedTo: "정승환",
+    },
+    {
+      tabNum: 2,
+      writedTo: "권진아",
+    },
+    {
+      tabNum: 3,
+      writedTo: "샘킴",
+    },
+    {
+      tabNum: 4,
+      writedTo: "이진아",
+    },
+  ],
+  // activeTab: [{}],
+  activeTab: {
     tabNum: 1,
     writedTo: "정승환",
   },
-  {
-    tabNum: 2,
-    writedTo: "권진아",
+  // tab: [{}],
+  tab: {
+    tabNum: 1,
+    writedTo: "정승환",
   },
-  {
-    tabNum: 3,
-    writedTo: "샘킴",
-  },
-  {
-    tabNum: 4,
-    writedTo: "이진아",
-  },
-];
+  letterValue: dummyData,
+};
 
 //원래라면
 // const [number, setNumber] = useState(0); 지만 위처럼 바꾼거야.
 
-// 리듀서 : "state에 변화를 일으키는"함수
-// (1) state를 action의 type에 따라 변경하는 함수
-// state를 action 안에 있는 type에 따라서 변경하는 작업
-
 // input : state, action
-// action 객체라는 건 action type을 payload만큼 처리하는 거야
-// ex : payload가 3이야. +가 되는데 3만큼을 plus(action)해라 라는거야.
 const letter = (state = initialState, action) => {
+  console.log("letter-payload=>", action.payload); //{tabNum: 1, writedTo: '정승환'}
   switch (action.type) {
-    case PLUS_ONE:
+    case SET_TAB:
+      return { ...state, tab: action.payload };
+    case SET_ACTIVE_TAB:
       return {
-        number: state.number + 1,
+        ...state,
+        activeTab: action.payload,
       };
-    case MINUS_ONE:
+
+    // Form
+    case SET_LETTER_VALUE:
       return {
-        number: state.number - 1,
+        ...state,
+        letterValue: [action.payload, ...state.letterValue],
       };
-    case PLUS_N:
+    case SET_LETTER_EDIT_DELTETE:
       return {
-        //number는 원래 있었던 state의 number에 action.payload라는 값을 더해서 리턴해줄거야라는 의미야.
-        number: state.number + action.payload,
+        ...state,
+        letterValue: action.payload,
       };
     default:
       return state;

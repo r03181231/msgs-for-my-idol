@@ -1,29 +1,20 @@
 // Detali.js
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-
-import React, { useContext, useState } from "react";
-import { LetterContext } from "context/LetterContext.js";
-
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setLetterEditDelete } from "../../redux/modules/letter";
 import EditDetail from "pages/editDetail/EditDetail";
 import Button from "component/common/button/Button";
 
 const Detail = () => {
-  const data = useContext(LetterContext);
-  const letterValue = data.letterValue; // array
-  const setLetterValue = data.setLetterValue;
-  const tab = data.tab;
-
   const { id } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const tabName = tab.writedTo;
-
-  const filterThisCard = letterValue.filter(
-    (data) => data.id === id && data.writedTo === tabName
-  );
-
+  const letterValue = useSelector((store) => store.letter.letterValue);
   const [isEdit, setIsEdit] = useState(false); // 수정 상태 , 저장
+  const thisLetter = letterValue.filter((data) => data.id === id);
 
-  const moveNavigator = () => {
+  const moveHomeNavigator = () => {
     navigate("/", { replace: true });
   };
 
@@ -41,19 +32,19 @@ const Detail = () => {
     }
 
     const dataArr = letterValue.filter((stayTodo) => stayTodo.id !== clickId);
-    setLetterValue(dataArr);
-    moveNavigator();
+    dispatch(setLetterEditDelete(dataArr));
+    moveHomeNavigator();
   };
 
   return (
     <>
-      {filterThisCard && filterThisCard.length > 0 ? (
-        filterThisCard.map((filterData) => {
+      {thisLetter && thisLetter.length > 0 ? (
+        thisLetter.map((filterData) => {
           const { id, avatar, nickname, writedTo, content, createdAt } =
             filterData;
           return (
             <div key={id}>
-              <Button name={"홈버튼"} onClick={moveNavigator} />
+              <Button name={"홈버튼"} onClick={moveHomeNavigator} />
               {!isEdit ? (
                 <div>
                   <img src={avatar} alt="dummyimage" />
@@ -82,14 +73,13 @@ const Detail = () => {
                   setIsEdit={setIsEdit}
                   filterData={filterData}
                   letterValue={letterValue}
-                  setLetterValue={setLetterValue}
                 />
               )}
             </div>
           );
         })
       ) : (
-        <>그래도 이게 뜨면 안 되지..</>
+        <div>정보를 받아오지 못하고 있습니다. 오류 사항을 문의해주세요</div>
       )}
     </>
   );

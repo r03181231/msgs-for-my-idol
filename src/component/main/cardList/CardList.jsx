@@ -1,16 +1,24 @@
+// import { useNavigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import * as S from "./StyleCardList";
 
-const CardList = ({ letterValue, tab }) => {
+const CardList = () => {
   const navigate = useNavigate();
-  const { writedTo } = tab; //state에 따라
+  const letterValue = useSelector((store) => store.letter.letterValue);
+  const tab = useSelector((store) => store.letter.tab);
+  const { tabNum, writedTo } = tab; //state에 따라
+  const filterLetter = letterValue.filter(
+    (letterItem) => letterItem.writedTo === writedTo
+  );
 
   const moveDetailPage = (clickId) => {
     navigate(
       `detail/${clickId}`,
       {
         state: {
-          tab,
+          tabNum,
+          writedTo,
           clickId,
         },
       },
@@ -20,22 +28,13 @@ const CardList = ({ letterValue, tab }) => {
 
   return (
     <section>
-      {letterValue.map((letterData) => {
+      {filterLetter.map((letterData) => {
         const { id, avatar, content, nickname, createdAt } = letterData;
         return (
           <section key={id}>
             <div onClick={() => moveDetailPage(id)}>
               <div>
-                <S.AvatarImg
-                  src={avatar}
-                  alt="기본이미지"
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    objectFit: "cover",
-                    borderRadius: "50rem",
-                  }}
-                />
+                <S.AvatarImg src={avatar} alt="기본이미지" />
                 <div>
                   <p>{nickname}</p>
                   <p>
@@ -55,7 +54,7 @@ const CardList = ({ letterValue, tab }) => {
           </section>
         );
       })}
-      {letterValue.length === 0 ? (
+      {filterLetter.length === 0 ? (
         <div>
           <p>
             {writedTo}님에게 남겨진 팬레터가 없습니다. 첫 번째 팬레터의 주인공이

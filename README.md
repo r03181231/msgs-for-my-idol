@@ -239,11 +239,11 @@ $ yarn start
 #### 브랜치 이름 : props-drilling(정식명칭: prop-drilling)
 <div>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/aa3742b3-d294-4490-9a59-6b4a5f66ac54" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/7ead0f2d-0891-4410-b782-a7b9d614426b" width="150px"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/7ead0f2d-0891-4410-b782-a7b9d614426b" width="150px" /><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/c6181b5d-d833-4e17-9899-5f2e78b65a68" width="150px" align="left" /><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/e397c87c-806b-4ed9-b053-5f7b58a4775e" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/5e8edc28-b407-43cd-adc3-d2dfcd3eb160" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/e071e841-be16-4cfe-aa15-12fe8fe6ca63" width="150px"  align="left"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/5e8edc28-b407-43cd-adc3-d2dfcd3eb160" width="150px"  align="left"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/e071e841-be16-4cfe-aa15-12fe8fe6ca63" width="150px"  /><p>
  
 </div>
 
@@ -254,11 +254,11 @@ $ yarn start
 #### 브랜치 이름 : context
 <div>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/ff083e68-b160-45e1-83de-07b6ead2a608" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/032cc3c2-d6ff-4e68-909c-6cf5b3958165" width="150px" align="left"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/032cc3c2-d6ff-4e68-909c-6cf5b3958165" width="150px"/><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/94265e5d-d30a-45d1-b12f-43dd77ffa4ee" width="150px" align="left"/><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/d70bb958-0ab3-4a66-8ce9-0ef8f2920017" width="150px" align="left"/><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/656696eb-6f99-4f38-8ce2-4052eb8dfdf6" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/aee11e3a-ac0e-45f2-88b2-1f7c89366285" width="150px" align="center"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/aee11e3a-ac0e-45f2-88b2-1f7c89366285" width="150px" /><p>
  
 </div>
 
@@ -269,10 +269,10 @@ $ yarn start
 #### 브랜치 이름 : redux
 <div>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/323ebbd7-9e31-4a52-8284-64741134e401" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/c67d3f92-3d71-488e-9ae7-370fe188a6a2" width="150px" align="left"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/c67d3f92-3d71-488e-9ae7-370fe188a6a2" width="150px" /><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/45335800-4dbe-4eef-84f8-6ca7c691e321" width="150px" align="left"/><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/dc9e98e1-62dc-4fda-89ab-ce6e2f90c56c" width="150px" align="left"/><p>
-  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/4b6b4527-f32d-4392-ad52-610e95618ca4" width="150px" align="left"/><p>
+  <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/4b6b4527-f32d-4392-ad52-610e95618ca4" width="150px" /><p>
   <p><img src="https://github.com/r03181231/msgs-for-my-idol/assets/152264010/8ac31e57-0a46-45b2-af63-3d16487e9d72" width="150px" align="center"/><p>
  
 </div>

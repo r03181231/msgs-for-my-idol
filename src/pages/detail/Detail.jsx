@@ -45,37 +45,40 @@ const Detail = ({ tab, letterValue, setLetterValue }) => {
           return (
             <div key={id}>
               <Button name={"홈버튼"} onClick={moveNavigator} />
-              {!isEdit ? (
-                <div>
-                  <img src={avatar} alt="dummyimage" />
-                  <ul>
-                    <li>{nickname}</li>
-                    <div>
-                      To : <span>{writedTo}</span>
-                    </div>
-                    <p>
-                      {new Date(createdAt).toLocaleDateString("ko-KR", {
-                        year: "2-digit",
-                        month: "2-digit",
-                        day: "2-digit",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        second: "2-digit",
-                      })}
-                    </p>
-                  </ul>
-                  <p>{content}</p>
-                  <Button name={"수정"} onClick={onEdit} />
-                  <Button name={"삭제"} onClick={() => onDelete(id)} />
-                </div>
-              ) : (
-                <EditDetail
-                  setIsEdit={setIsEdit}
-                  filterData={filterData}
-                  letterValue={letterValue}
-                  setLetterValue={setLetterValue}
-                />
-              )}
+
+              <div>
+                <img src={avatar} alt="dummyimage" />
+                <ul>
+                  <li>{nickname}</li>
+                  <div>
+                    To : <span>{writedTo}</span>
+                  </div>
+                  <p>
+                    {new Date(createdAt).toLocaleDateString("ko-KR", {
+                      year: "2-digit",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    })}
+                  </p>
+                </ul>
+                {!isEdit ? (
+                  <>
+                    <p>{content}</p>
+                    <Button name={"수정"} onClick={onEdit} />
+                    <Button name={"삭제"} onClick={() => onDelete(id)} />
+                  </>
+                ) : (
+                  <EditDetail
+                    setIsEdit={setIsEdit}
+                    filterData={filterData}
+                    letterValue={letterValue}
+                    setLetterValue={setLetterValue}
+                  />
+                )}
+              </div>
             </div>
           );
         })

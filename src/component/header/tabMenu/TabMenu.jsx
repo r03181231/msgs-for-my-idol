@@ -3,7 +3,6 @@ import * as S from "./StyledTabMenu";
 
 const TabMenu = ({ tabData, setTab }) => {
   const [activeTab, setActiveTab] = useState(tabData[0]);
-  console.log(activeTab);
 
   const onClickTabChange = (tabInfomation) => {
     setTab(tabInfomation);

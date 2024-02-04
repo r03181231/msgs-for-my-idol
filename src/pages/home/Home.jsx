@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import * as S from "./StyledHome.jsx";
 import HeadContents from "component/header/headContents/HeadContents.jsx";
 import CardList from "component/main/cardList/CardList.jsx";
 import FormAdd from "component/main/addform/formAdd/FormAdd.jsx";
+import * as S from "./StyledHome.jsx";
 
 const Home = ({ letterValue, setLetterValue, tab, setTab, tabData }) => {
+  const writeToName = tab.writedTo;
   const blankPattern = /^\s+|\s+$/g;
   let time = new Date().toISOString();
-
-  console.log(tab.writedTo);
-  const writeToName = tab.writedTo;
 
   const filterWritedTo = (writedTo) => {
     return letterValue.filter((letterItem) => letterItem.writedTo === writedTo);

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
 import EditDetail from "pages/editDetail/EditDetail";
 import Button from "component/common/button/Button";
 
-const Detail = ({ tab, setTab, letterValue, setLetterValue }) => {
+const Detail = ({ tab, letterValue, setLetterValue }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const tabName = tab.writedTo;
@@ -81,7 +80,7 @@ const Detail = ({ tab, setTab, letterValue, setLetterValue }) => {
           );
         })
       ) : (
-        <>그래도 이게 뜨면 안 되지..</>
+        <>정보를 가져오는 중에 문제가 발생했습니다. </>
       )}
     </>
   );

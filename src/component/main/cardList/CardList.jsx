@@ -2,21 +2,11 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./StyleCardList";
 
 const CardList = ({ letterValue, tab }) => {
-  console.log(letterValue);
   const navigate = useNavigate();
   const { writedTo } = tab; //state에 따라
 
   const moveDetailPage = (clickId) => {
-    navigate(
-      `detail/${clickId}`,
-      {
-        state: {
-          tab,
-          clickId,
-        },
-      },
-      { replace: true }
-    );
+    navigate(`detail/${clickId}`, { replace: true });
   };
 
   return (
@@ -27,16 +17,7 @@ const CardList = ({ letterValue, tab }) => {
           <section key={id}>
             <div onClick={() => moveDetailPage(id)}>
               <div>
-                <S.AvatarImg
-                  src={avatar}
-                  alt="기본이미지"
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    objectFit: "cover",
-                    borderRadius: "50rem",
-                  }}
-                />
+                <S.AvatarImg src={avatar} alt="기본이미지" />
                 <div>
                   <p>{nickname}</p>
                   <p>

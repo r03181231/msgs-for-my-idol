@@ -1,8 +1,8 @@
-import Button from "component/common/button/Button";
 import React, { useEffect, useRef } from "react";
 import { v4 as randomId } from "uuid";
 import FormSelect from "../formSelect/FormSelect";
 import useInputs from "component/common/useInput/useInputs";
+import Button from "component/common/button/Button";
 
 const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
   const normalAvataUrl =
@@ -17,7 +17,7 @@ const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
     writedTo: tab.writedTo,
     createdAt: time,
   });
-  const { nickname, content, writedTo } = addValue;
+  const { nickname, content } = addValue;
   // input 유효성
   const nicknameBlank = nickname.replace(blankPattern, "");
   const contentBlank = content.replace(blankPattern, "");
@@ -47,7 +47,6 @@ const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
     }
 
     setLetterValue((prevValue) => [{ ...addValue }, ...prevValue]);
-
     reset();
     nicknameRef.current.focus();
   };

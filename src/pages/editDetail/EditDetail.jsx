@@ -1,7 +1,6 @@
+import React from "react";
 import Button from "component/common/button/Button";
 import useInputs from "component/common/useInput/useInputs";
-
-import React from "react";
 
 const EditDetail = ({ setIsEdit, filterData, letterValue, setLetterValue }) => {
   const { id, avatar, nickname, writedTo, content, createdAt } = filterData;

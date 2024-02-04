@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setLetterEditDelete } from "../../redux/modules/letter";
+import { setLetterEditDelete } from "../../../redux/modules/letter";
 import useInputs from "component/common/useInput/useInputs";
 import Button from "component/common/button/Button";
 

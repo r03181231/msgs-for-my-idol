@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLetterEditDelete } from "../../redux/modules/letter";
-import EditDetail from "component/editDetail/EditDetail";
+import EditDetail from "component/main/editDetail/EditDetail";
 import Button from "component/common/button/Button";
 
 const Detail = () => {

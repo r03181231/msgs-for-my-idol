@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { LetterContext } from "context/LetterContext";
 import * as S from "./StyleCardList";
 
-const CardList = ({ letterValue, tab }) => {
+const CardList = ({ letterValue }) => {
   const navigate = useNavigate();
+  const { tab } = useContext(LetterContext);
   const { writedTo } = tab; //state에 따라
 
   const moveDetailPage = (clickId) => {
@@ -26,16 +29,7 @@ const CardList = ({ letterValue, tab }) => {
           <section key={id}>
             <div onClick={() => moveDetailPage(id)}>
               <div>
-                <S.AvatarImg
-                  src={avatar}
-                  alt="기본이미지"
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    objectFit: "cover",
-                    borderRadius: "50rem",
-                  }}
-                />
+                <S.AvatarImg src={avatar} alt="기본이미지" />
                 <div>
                   <p>{nickname}</p>
                   <p>

@@ -6,11 +6,7 @@ import FormAdd from "component/main/addform/formAdd/FormAdd.jsx";
 import * as S from "./StyledHome.jsx";
 
 const Home = () => {
-  const data = useContext(LetterContext);
-  const letterValue = data.letterValue;
-  const tabData = data.tabData;
-  const tab = data.tab;
-
+  const { letterValue, tabData, tab } = useContext(LetterContext);
   const filterWritedTo = (writedTo) => {
     return letterValue.filter((letterItem) => letterItem.writedTo === writedTo);
   };
@@ -25,8 +21,8 @@ const Home = () => {
         return (
           tab.writedTo === writedTo && (
             <div key={tabNum}>
-              <FormAdd tab={tab} tabData={tabData} />
-              <CardList letterValue={filterWritedTo(writedTo)} tab={tab} />
+              <FormAdd />
+              <CardList letterValue={filterWritedTo(writedTo)} />
             </div>
           )
         );

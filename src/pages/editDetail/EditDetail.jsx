@@ -4,9 +4,7 @@ import useInputs from "component/common/useInput/useInputs";
 import Button from "component/common/button/Button";
 
 const EditDetail = ({ setIsEdit, filterData }) => {
-  const data = useContext(LetterContext);
-  const letterValue = data.letterValue;
-  const setLetterValue = data.setLetterValue;
+  const { letterValue, setLetterValue } = useContext(LetterContext);
   const { id, avatar, nickname, writedTo, content, createdAt } = filterData;
   const [editValue, setEditValue, onChange, reset] = useInputs({
     id,
@@ -32,7 +30,6 @@ const EditDetail = ({ setIsEdit, filterData }) => {
     }
 
     const editData = letterValue.map((prevData) => {
-      console.log(prevData.id === id);
       if (prevData.id === id) {
         return {
           ...prevData,

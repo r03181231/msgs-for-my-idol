@@ -1,7 +1,6 @@
 // Detali.js
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-
 import React, { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { LetterContext } from "context/LetterContext.js";
 import EditDetail from "pages/editDetail/EditDetail";
 import Button from "component/common/button/Button";
@@ -9,10 +8,7 @@ import Button from "component/common/button/Button";
 const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const data = useContext(LetterContext);
-  const letterValue = data.letterValue; // array
-  const setLetterValue = data.setLetterValue;
-  const tab = data.tab;
+  const { letterValue, setLetterValue, tab } = useContext(LetterContext);
   const tabName = tab.writedTo;
   const [isEdit, setIsEdit] = useState(false); // 수정 상태 , 저장
   const filterThisCard = letterValue.filter(
@@ -74,12 +70,7 @@ const Detail = () => {
                   <Button name={"삭제"} onClick={() => onDelete(id)} />
                 </div>
               ) : (
-                <EditDetail
-                  setIsEdit={setIsEdit}
-                  filterData={filterData}
-                  letterValue={letterValue}
-                  setLetterValue={setLetterValue}
-                />
+                <EditDetail setIsEdit={setIsEdit} filterData={filterData} />
               )}
             </div>
           );

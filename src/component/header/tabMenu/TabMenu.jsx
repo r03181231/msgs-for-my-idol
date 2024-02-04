@@ -4,9 +4,7 @@ import { LetterContext } from "context/LetterContext";
 import * as S from "./StyledTabMenu";
 
 const TabMenu = () => {
-  const data = useContext(LetterContext);
-  const setTab = data.setTab;
-  const tabData = data.tabData;
+  const { setTab, tabData } = useContext(LetterContext);
   const [activeTab, setActiveTab] = useState(tabData[0]);
 
   const onClickTabChange = (tabInfomation) => {
@@ -19,12 +17,11 @@ const TabMenu = () => {
       <S.UlArtistName>
         {tabData.map((sortTab) => {
           const { tabNum, writedTo } = sortTab;
-
           return (
             <S.Li
+              key={tabNum}
               id={tabNum}
               $isactive={activeTab.tabNum}
-              key={tabNum}
               onClick={() => onClickTabChange(sortTab)}
             >
               {writedTo}

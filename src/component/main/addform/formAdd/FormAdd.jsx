@@ -1,20 +1,18 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { LetterContext } from "context/LetterContext";
 import { v4 as randomId } from "uuid";
+import FormSelect from "../formSelect/FormSelect";
 import useInputs from "component/common/useInput/useInputs";
 import Button from "component/common/button/Button";
-import FormSelect from "../formSelect/FormSelect";
 
-const FormAdd = ({ tab, tabData }) => {
+const FormAdd = () => {
   const normalAvataUrl =
     "https://lh7-us.googleusercontent.com/MyS-PhOT-AvaQtCYXsr0oQPxakqvdc-s-QFcNZmCwd19fbYditWA_IwxeepE78dANxt04nEws75hrFfmqNuhJLx2EQxy_RSe8x6M7LcHGVjhzEkSpREFDhWljam2mdGNxes5xqoxP1sZpYijy3nTTXU";
-  const data = useContext(LetterContext);
-  const setLetterValue = data.setLetterValue;
-  const blankPattern = data.blankPattern;
+  const { setLetterValue, tab } = useContext(LetterContext);
   const nicknameRef = useRef(null);
   const contentRef = useRef(null);
-  const time = data.time;
-
+  const blankPattern = /^\s+|\s+$/g;
+  let time = new Date().toISOString();
   const [addValue, setAddValue, onChange, reset] = useInputs({
     id: randomId(),
     nickname: "",
@@ -23,7 +21,7 @@ const FormAdd = ({ tab, tabData }) => {
     writedTo: tab.writedTo,
     createdAt: time,
   });
-  const { nickname, content, writedTo } = addValue;
+  const { nickname, content } = addValue;
   const nicknameBlank = nickname.replace(blankPattern, "");
   const contentBlank = content.replace(blankPattern, "");
   // input 포커스
@@ -85,12 +83,7 @@ const FormAdd = ({ tab, tabData }) => {
             onChange={onChange}
           />
         </div>
-        <FormSelect
-          tabData={tabData}
-          onChange={onChange}
-          addValue={addValue}
-          setAddValue={setAddValue}
-        />
+        <FormSelect addValue={addValue} setAddValue={setAddValue} />
         <div>
           <Button name={"등록"} />
         </div>

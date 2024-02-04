@@ -1,7 +1,7 @@
 import GlobalStyle from "GlobalStyle";
 import Router from "../src/shared/Router";
-import { useState } from "react";
 import dummyData from "./shared/fakeData.json";
+import { useState } from "react";
 import { LetterContext } from "context/LetterContext";
 
 const App = () => {
@@ -25,23 +25,18 @@ const App = () => {
   ];
   const [letterValue, setLetterValue] = useState(dummyData);
   const [tab, setTab] = useState(tabData[0]);
-  let time = new Date().toISOString();
-  const blankPattern = /^\s+|\s+$/g;
+  const value = {
+    tabData,
+    tab,
+    setTab,
+    letterValue,
+    setLetterValue,
+    dummyData,
+  };
   return (
     <>
       <GlobalStyle />
-      <LetterContext.Provider
-        value={{
-          tabData,
-          tab,
-          setTab,
-          letterValue,
-          setLetterValue,
-          dummyData,
-          blankPattern,
-          time,
-        }}
-      >
+      <LetterContext.Provider value={value}>
         <Router />
       </LetterContext.Provider>
     </>

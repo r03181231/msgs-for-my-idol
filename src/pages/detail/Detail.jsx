@@ -45,41 +45,47 @@ const Detail = () => {
           return (
             <div key={id}>
               <Button name={"홈버튼"} onClick={moveHomeNavigator} />
-              {!isEdit ? (
-                <div>
-                  <img src={avatar} alt="dummyimage" />
-                  <ul>
-                    <li>{nickname}</li>
-                    <div>
-                      To : <span>{writedTo}</span>
-                    </div>
-                    <p>
-                      {new Date(createdAt).toLocaleDateString("ko-KR", {
-                        year: "2-digit",
-                        month: "2-digit",
-                        day: "2-digit",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        second: "2-digit",
-                      })}
-                    </p>
-                  </ul>
-                  <p>{content}</p>
-                  <Button name={"수정"} onClick={onEdit} />
-                  <Button name={"삭제"} onClick={() => onDelete(id)} />
-                </div>
-              ) : (
-                <EditDetail
-                  setIsEdit={setIsEdit}
-                  filterData={filterData}
-                  letterValue={letterValue}
-                />
-              )}
+
+              <div>
+                <img src={avatar} alt="dummyimage" />
+                <ul>
+                  <li>{nickname}</li>
+                  <div>
+                    To : <span>{writedTo}</span>
+                  </div>
+                  <p>
+                    {new Date(createdAt).toLocaleDateString("ko-KR", {
+                      year: "2-digit",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    })}
+                  </p>
+                </ul>
+                {!isEdit ? (
+                  <div>
+                    <p>{content}</p>
+                    <Button name={"수정"} onClick={onEdit} />
+                    <Button name={"삭제"} onClick={() => onDelete(id)} />
+                  </div>
+                ) : (
+                  <EditDetail
+                    setIsEdit={setIsEdit}
+                    filterData={filterData}
+                    letterValue={letterValue}
+                  />
+                )}
+              </div>
             </div>
           );
         })
       ) : (
-        <div>정보를 받아오지 못하고 있습니다. 오류 사항을 문의해주세요</div>
+        <div>
+          정보를 불러오는 중에 문제가 발생했습니다. 홈화면으로 이동해여 새로고침
+          해 주세요.
+        </div>
       )}
     </>
   );

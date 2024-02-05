@@ -51,23 +51,6 @@ const EditDetail = ({ setIsEdit, filterData }) => {
 
   return (
     <div>
-      <img src={avatar} alt="dummyimage" />
-      <ul>
-        <li>{nickname}</li>
-        <div>
-          To : <span>{writedTo}</span>
-        </div>
-        <p>
-          {new Date(createdAt).toLocaleDateString("ko-KR", {
-            year: "2-digit",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          })}
-        </p>
-      </ul>
       <textarea
         name="content"
         rows={1}

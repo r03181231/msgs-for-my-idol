@@ -5,8 +5,6 @@ import * as S from "./StyledHome.jsx";
 
 const Home = ({ letterValue, setLetterValue, tab, setTab, tabData }) => {
   const writeToName = tab.writedTo;
-  const blankPattern = /^\s+|\s+$/g;
-  let time = new Date().toISOString();
 
   const filterWritedTo = (writedTo) => {
     return letterValue.filter((letterItem) => letterItem.writedTo === writedTo);
@@ -26,9 +24,8 @@ const Home = ({ letterValue, setLetterValue, tab, setTab, tabData }) => {
                 writeToName={writeToName}
                 tab={tab}
                 tabData={tabData}
+                setTab={setTab}
                 setLetterValue={setLetterValue}
-                blankPattern={blankPattern}
-                time={time}
               />
               <CardList
                 letterValue={filterWritedTo(writedTo)}

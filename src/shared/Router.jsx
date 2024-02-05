@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Detail from "../pages/detail/Detail";
 import Home from "../pages/home/Home";
@@ -23,8 +23,22 @@ const Router = () => {
       writedTo: "이진아",
     },
   ];
-  const [letterValue, setLetterValue] = useState(dummyData);
   const [tab, setTab] = useState(tabData[0]);
+
+  useEffect(() => {
+    const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
+    if (storageItem) {
+      setLetterValue(storageItem);
+    } else {
+      setLetterValue(dummyData);
+    }
+  }, [tab.writedTo]);
+
+  const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
+  const [letterValue, setLetterValue] = useState(storageItem || dummyData);
+  useEffect(() => {
+    localStorage.setItem(tab.writedTo, JSON.stringify(letterValue));
+  }, [tab.writedTo, letterValue]);
   return (
     <>
       <BrowserRouter>

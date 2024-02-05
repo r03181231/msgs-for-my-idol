@@ -31,7 +31,6 @@ const EditDetail = ({ setIsEdit, filterData, letterValue, setLetterValue }) => {
     }
 
     const editData = letterValue.map((prevData) => {
-      console.log(prevData.id === id);
       if (prevData.id === id) {
         return {
           ...prevData,

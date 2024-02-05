@@ -4,11 +4,13 @@ import FormSelect from "../formSelect/FormSelect";
 import useInputs from "component/common/useInput/useInputs";
 import Button from "component/common/button/Button";
 
-const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
+const FormAdd = ({ tab, tabData, setTab, setLetterValue }) => {
   const normalAvataUrl =
     "https://lh7-us.googleusercontent.com/MyS-PhOT-AvaQtCYXsr0oQPxakqvdc-s-QFcNZmCwd19fbYditWA_IwxeepE78dANxt04nEws75hrFfmqNuhJLx2EQxy_RSe8x6M7LcHGVjhzEkSpREFDhWljam2mdGNxes5xqoxP1sZpYijy3nTTXU";
   const nicknameRef = useRef(null);
   const contentRef = useRef(null);
+  const blankPattern = /^\s+|\s+$/g;
+  let time = new Date().toISOString();
   const [addValue, setAddValue, onChange, reset] = useInputs({
     id: randomId(),
     nickname: "",
@@ -17,7 +19,7 @@ const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
     writedTo: tab.writedTo,
     createdAt: time,
   });
-  const { nickname, content } = addValue;
+  const { nickname, content, writedTo } = addValue;
   // input 유효성
   const nicknameBlank = nickname.replace(blankPattern, "");
   const contentBlank = content.replace(blankPattern, "");
@@ -46,7 +48,13 @@ const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
       return;
     }
 
-    setLetterValue((prevValue) => [{ ...addValue }, ...prevValue]);
+    setLetterValue((prevValue) => {
+      localStorage.setItem(
+        writedTo,
+        JSON.stringify([{ ...addValue }, ...prevValue])
+      );
+      return [{ ...addValue }, ...prevValue];
+    });
     reset();
     nicknameRef.current.focus();
   };
@@ -82,7 +90,6 @@ const FormAdd = ({ tab, tabData, setLetterValue, blankPattern, time }) => {
         </div>
         <FormSelect
           tabData={tabData}
-          onChange={onChange}
           addValue={addValue}
           setAddValue={setAddValue}
         />

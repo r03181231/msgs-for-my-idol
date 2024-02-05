@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
+import { LetterContext } from "context/LetterContext";
 import GlobalStyle from "GlobalStyle";
 import Router from "../src/shared/Router";
 import dummyData from "./shared/fakeData.json";
-import { useState } from "react";
-import { LetterContext } from "context/LetterContext";
 
 const App = () => {
   const tabData = [
@@ -23,8 +23,10 @@ const App = () => {
       writedTo: "이진아",
     },
   ];
-  const [letterValue, setLetterValue] = useState(dummyData);
+
   const [tab, setTab] = useState(tabData[0]);
+  const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
+  const [letterValue, setLetterValue] = useState(storageItem || dummyData);
   const value = {
     tabData,
     tab,
@@ -33,6 +35,19 @@ const App = () => {
     setLetterValue,
     dummyData,
   };
+  useEffect(() => {
+    const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
+    if (storageItem) {
+      setLetterValue(storageItem);
+    } else {
+      setLetterValue(dummyData);
+    }
+  }, [tab.writedTo]);
+
+  useEffect(() => {
+    localStorage.setItem(tab.writedTo, JSON.stringify(letterValue));
+  }, [tab.writedTo, letterValue]);
+
   return (
     <>
       <GlobalStyle />

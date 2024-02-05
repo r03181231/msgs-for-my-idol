@@ -21,7 +21,7 @@ const FormAdd = () => {
     writedTo: tab.writedTo,
     createdAt: time,
   });
-  const { nickname, content } = addValue;
+  const { nickname, content, writedTo } = addValue;
   const nicknameBlank = nickname.replace(blankPattern, "");
   const contentBlank = content.replace(blankPattern, "");
   // input 포커스
@@ -49,7 +49,13 @@ const FormAdd = () => {
       return;
     }
 
-    setLetterValue((prevValue) => [{ ...addValue }, ...prevValue]);
+    setLetterValue((prevValue) => {
+      localStorage.setItem(
+        writedTo,
+        JSON.stringify([{ ...addValue }, ...prevValue])
+      );
+      return [{ ...addValue }, ...prevValue];
+    });
     reset();
     nicknameRef.current.focus();
   };

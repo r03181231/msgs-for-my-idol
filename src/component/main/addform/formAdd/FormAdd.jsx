@@ -50,10 +50,10 @@ const FormAdd = () => {
     }
 
     setLetterValue((prevValue) => {
-      localStorage.setItem(
-        writedTo,
-        JSON.stringify([{ ...addValue }, ...prevValue])
-      );
+      // localStorage.setItem(
+      //   writedTo,
+      //   JSON.stringify([{ ...addValue }, ...prevValue])
+      // );
       return [{ ...addValue }, ...prevValue];
     });
     reset();

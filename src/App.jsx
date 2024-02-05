@@ -35,18 +35,18 @@ const App = () => {
     setLetterValue,
     dummyData,
   };
-  useEffect(() => {
-    const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
-    if (storageItem) {
-      setLetterValue(storageItem);
-    } else {
-      setLetterValue(dummyData);
-    }
-  }, [tab.writedTo]);
+  // useEffect(() => {
+  //   const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
+  //   if (storageItem) {
+  //     setLetterValue(storageItem);
+  //   } else {
+  //     setLetterValue(dummyData);
+  //   }
+  // }, [tab.writedTo]);
 
-  useEffect(() => {
-    localStorage.setItem(tab.writedTo, JSON.stringify(letterValue));
-  }, [tab.writedTo, letterValue]);
+  // useEffect(() => {
+  //   localStorage.setItem(tab.writedTo, JSON.stringify(letterValue));
+  // }, [tab.writedTo, letterValue]);
 
   return (
     <>

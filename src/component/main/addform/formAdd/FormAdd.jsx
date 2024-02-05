@@ -8,7 +8,7 @@ import Button from "component/common/button/Button";
 const FormAdd = () => {
   const normalAvataUrl =
     "https://lh7-us.googleusercontent.com/MyS-PhOT-AvaQtCYXsr0oQPxakqvdc-s-QFcNZmCwd19fbYditWA_IwxeepE78dANxt04nEws75hrFfmqNuhJLx2EQxy_RSe8x6M7LcHGVjhzEkSpREFDhWljam2mdGNxes5xqoxP1sZpYijy3nTTXU";
-  const { setLetterValue, tab } = useContext(LetterContext);
+  const { setLetterValue, tab, tabData } = useContext(LetterContext);
   const nicknameRef = useRef(null);
   const contentRef = useRef(null);
   const blankPattern = /^\s+|\s+$/g;
@@ -89,7 +89,11 @@ const FormAdd = () => {
             onChange={onChange}
           />
         </div>
-        <FormSelect addValue={addValue} setAddValue={setAddValue} />
+        <FormSelect
+          tabData={tabData}
+          addValue={addValue}
+          setAddValue={setAddValue}
+        />
         <div>
           <Button name={"등록"} />
         </div>

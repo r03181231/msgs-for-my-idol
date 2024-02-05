@@ -7,23 +7,17 @@ const CardList = ({ letterValue }) => {
   const navigate = useNavigate();
   const { tab } = useContext(LetterContext);
   const { writedTo } = tab; //state에 따라
+  const filterLetter = letterValue.filter(
+    (letterItem) => letterItem.writedTo === writedTo
+  );
 
   const moveDetailPage = (clickId) => {
-    navigate(
-      `detail/${clickId}`,
-      {
-        state: {
-          tab,
-          clickId,
-        },
-      },
-      { replace: true }
-    );
+    navigate(`detail/${clickId}`, { replace: true });
   };
 
   return (
     <section>
-      {letterValue.map((letterData) => {
+      {filterLetter.map((letterData) => {
         const { id, avatar, content, nickname, createdAt } = letterData;
         return (
           <section key={id}>
@@ -49,7 +43,7 @@ const CardList = ({ letterValue }) => {
           </section>
         );
       })}
-      {letterValue.length === 0 ? (
+      {filterLetter.length === 0 ? (
         <div>
           <p>
             {writedTo}님에게 남겨진 팬레터가 없습니다. 첫 번째 팬레터의 주인공이

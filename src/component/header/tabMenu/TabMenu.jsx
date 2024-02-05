@@ -5,7 +5,7 @@ import * as S from "./StyledTabMenu";
 
 const TabMenu = () => {
   const { setTab, tabData } = useContext(LetterContext);
-  const [activeTab, setActiveTab] = useState(tabData[0]);
+  const [activeTab, setActiveTab] = useState({ tabNum: 1, writedTo: "정승환" });
 
   const onClickTabChange = (tabInfomation) => {
     setTab(tabInfomation);
@@ -15,14 +15,14 @@ const TabMenu = () => {
   return (
     <S.Nav>
       <S.UlArtistName>
-        {tabData.map((sortTab) => {
-          const { tabNum, writedTo } = sortTab;
+        {tabData.map((tabItem) => {
+          const { tabNum, writedTo } = tabItem;
           return (
             <S.Li
               key={tabNum}
               id={tabNum}
               $isactive={activeTab.tabNum}
-              onClick={() => onClickTabChange(sortTab)}
+              onClick={() => onClickTabChange(tabItem)}
             >
               {writedTo}
             </S.Li>

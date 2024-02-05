@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { LetterContext } from "context/LetterContext.js";
-import EditDetail from "pages/editDetail/EditDetail";
+import EditDetail from "component/main/editDetail/EditDetail";
 import Button from "component/common/button/Button";
 
 const Detail = () => {

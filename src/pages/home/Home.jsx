@@ -7,9 +7,6 @@ import * as S from "./StyledHome.jsx";
 
 const Home = () => {
   const { letterValue, tabData, tab } = useContext(LetterContext);
-  const filterWritedTo = (writedTo) => {
-    return letterValue.filter((letterItem) => letterItem.writedTo === writedTo);
-  };
 
   return (
     <S.Layout>
@@ -22,7 +19,7 @@ const Home = () => {
           tab.writedTo === writedTo && (
             <div key={tabNum}>
               <FormAdd />
-              <CardList letterValue={filterWritedTo(writedTo)} />
+              <CardList letterValue={letterValue} />
             </div>
           )
         );

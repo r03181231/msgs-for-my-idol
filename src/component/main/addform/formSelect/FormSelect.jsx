@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { LetterContext } from "context/LetterContext";
+// import { useContext } from "react";
+// import { LetterContext } from "context/LetterContext";
 
 // FormSelect.jsx
-const FormSelect = ({ addValue, setAddValue }) => {
-  const { tabData } = useContext(LetterContext);
+const FormSelect = ({ tabData, addValue, setAddValue }) => {
   const { writedTo } = addValue;
   const optionOrder = (e) => {
     setAddValue((prev) => {

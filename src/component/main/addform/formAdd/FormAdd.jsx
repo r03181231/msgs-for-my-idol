@@ -4,7 +4,7 @@ import FormSelect from "../formSelect/FormSelect";
 import useInputs from "component/common/useInput/useInputs";
 import Button from "component/common/button/Button";
 
-const FormAdd = ({ tab, tabData, setTab, setLetterValue }) => {
+const FormAdd = ({ tab, tabData, setLetterValue }) => {
   const normalAvataUrl =
     "https://lh7-us.googleusercontent.com/MyS-PhOT-AvaQtCYXsr0oQPxakqvdc-s-QFcNZmCwd19fbYditWA_IwxeepE78dANxt04nEws75hrFfmqNuhJLx2EQxy_RSe8x6M7LcHGVjhzEkSpREFDhWljam2mdGNxes5xqoxP1sZpYijy3nTTXU";
   const nicknameRef = useRef(null);

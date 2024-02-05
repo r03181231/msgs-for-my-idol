@@ -24,7 +24,6 @@ const Home = ({ letterValue, setLetterValue, tab, setTab, tabData }) => {
                 writeToName={writeToName}
                 tab={tab}
                 tabData={tabData}
-                setTab={setTab}
                 setLetterValue={setLetterValue}
               />
               <CardList

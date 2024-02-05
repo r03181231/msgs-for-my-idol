@@ -1,15 +1,12 @@
-import React, { useState } from "react";
 import { useContext } from "react";
 import { LetterContext } from "context/LetterContext";
 import * as S from "./StyledTabMenu";
 
 const TabMenu = () => {
-  const { setTab, tabData } = useContext(LetterContext);
-  const [activeTab, setActiveTab] = useState({ tabNum: 1, writedTo: "정승환" });
+  const { setTab, tabData, tab } = useContext(LetterContext);
 
   const onClickTabChange = (tabInfomation) => {
     setTab(tabInfomation);
-    setActiveTab(tabInfomation);
   };
 
   return (
@@ -21,7 +18,7 @@ const TabMenu = () => {
             <S.Li
               key={tabNum}
               id={tabNum}
-              $isactive={activeTab.tabNum}
+              $isactive={tab.tabNum}
               onClick={() => onClickTabChange(tabItem)}
             >
               {writedTo}

@@ -9,24 +9,29 @@ const App = () => {
     {
       tabNum: 1,
       writedTo: "정승환",
+      $isactive: true,
     },
     {
       tabNum: 2,
       writedTo: "권진아",
+      $isactive: false,
     },
     {
       tabNum: 3,
       writedTo: "샘킴",
+      $isactive: false,
     },
     {
       tabNum: 4,
       writedTo: "이진아",
+      $isactive: false,
     },
   ];
 
   const [tab, setTab] = useState(tabData[0]);
-  const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
-  const [letterValue, setLetterValue] = useState(storageItem || dummyData);
+  // const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
+  const [letterValue, setLetterValue] = useState(dummyData);
+  // const [letterValue, setLetterValue] = useState(storageItem || dummyData);
   const value = {
     tabData,
     tab,

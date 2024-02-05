@@ -11,11 +11,10 @@ const Detail = () => {
   const { letterValue, setLetterValue, tab } = useContext(LetterContext);
   const tabName = tab.writedTo;
   const [isEdit, setIsEdit] = useState(false); // 수정 상태 , 저장
-  const filterThisCard = letterValue.filter(
-    (data) => data.id === id && data.writedTo === tabName
-  );
+  const filterThisCard = letterValue.filter((data) => data.id === id);
 
   const moveNavigator = () => {
+    // navigate("/");
     navigate("/", { replace: true });
   };
 

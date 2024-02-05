@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import EditDetail from "pages/editDetail/EditDetail";
 import Button from "component/common/button/Button";
+import EditDetail from "../../component/main/editDetail/EditDetail";
 
 const Detail = ({ tab, letterValue, setLetterValue }) => {
   const { id } = useParams();

@@ -10,31 +10,31 @@ const CardList = ({ letterValue, tab }) => {
   };
 
   return (
-    <section>
+    <S.CardSection>
       {letterValue.map((letterData) => {
         const { id, avatar, content, nickname, createdAt } = letterData;
         return (
-          <section key={id}>
-            <div onClick={() => moveDetailPage(id)}>
-              <div>
-                <S.AvatarImg src={avatar} alt="기본이미지" />
-                <div>
-                  <p>{nickname}</p>
-                  <p>
-                    {new Date(createdAt).toLocaleDateString("ko-KR", {
-                      year: "2-digit",
-                      month: "2-digit",
-                      day: "2-digit",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      second: "2-digit",
-                    })}
-                  </p>
-                  <S.contentP>{content}</S.contentP>
-                </div>
-              </div>
-            </div>
-          </section>
+          <S.LetterWapperDiv key={id}>
+            <S.UserInfoDiv onClick={() => moveDetailPage(id)}>
+              <S.ImgWapperDiv>
+                <S.AvatarImg src={null ?? avatar} alt="기본이미지" />
+              </S.ImgWapperDiv>
+              <S.NicknameNdDateDiv>
+                <p>{nickname}</p>
+                <p>
+                  {new Date(createdAt).toLocaleDateString("ko-KR", {
+                    year: "2-digit",
+                    month: "2-digit",
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                  })}
+                </p>
+                <S.ContentP>{content}</S.ContentP>
+              </S.NicknameNdDateDiv>
+            </S.UserInfoDiv>
+          </S.LetterWapperDiv>
         );
       })}
       {letterValue.length === 0 ? (
@@ -45,7 +45,7 @@ const CardList = ({ letterValue, tab }) => {
           </p>
         </div>
       ) : null}
-    </section>
+    </S.CardSection>
   );
 };
 

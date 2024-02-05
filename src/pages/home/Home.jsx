@@ -7,6 +7,7 @@ const Home = ({ letterValue, setLetterValue, tab, setTab, tabData }) => {
   const writeToName = tab.writedTo;
 
   const filterWritedTo = (writedTo) => {
+    console.log(letterValue);
     return letterValue.filter((letterItem) => letterItem.writedTo === writedTo);
   };
 

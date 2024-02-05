@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Detail from "../pages/detail/Detail";
 import Home from "../pages/home/Home";
 import dummyData from "../shared/fakeData.json";
@@ -37,7 +37,7 @@ const Router = () => {
   const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
   const [letterValue, setLetterValue] = useState(storageItem || dummyData);
   useEffect(() => {
-    localStorage.setItem(tab.writedTo, JSON.stringify(letterValue));
+    localStorage.setItem(tab.writedTo, JSON.stringify(letterValue || []));
   }, [tab.writedTo, letterValue]);
   return (
     <>
@@ -66,6 +66,7 @@ const Router = () => {
               />
             }
           />
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>
     </>

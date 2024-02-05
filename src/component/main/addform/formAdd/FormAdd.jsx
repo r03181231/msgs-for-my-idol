@@ -50,15 +50,15 @@ const FormAdd = () => {
     }
 
     setLetterValue((prevValue) => {
-      // localStorage.setItem(
-      //   writedTo,
-      //   JSON.stringify([{ ...addValue }, ...prevValue])
-      // );
       return [{ ...addValue }, ...prevValue];
     });
     reset();
     nicknameRef.current.focus();
   };
+  // localStorage.setItem(
+  //   writedTo,
+  //   JSON.stringify([{ ...addValue }, ...prevValue])
+  // );
 
   return (
     <section>

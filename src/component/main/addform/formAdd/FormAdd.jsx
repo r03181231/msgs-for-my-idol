@@ -19,7 +19,7 @@ const FormAdd = ({ tab, tabData, setLetterValue }) => {
     writedTo: tab.writedTo,
     createdAt: time,
   });
-  const { nickname, content, writedTo } = addValue;
+  const { nickname, content } = addValue;
   // input 유효성
   const nicknameBlank = nickname.replace(blankPattern, "");
   const contentBlank = content.replace(blankPattern, "");
@@ -28,6 +28,7 @@ const FormAdd = ({ tab, tabData, setLetterValue }) => {
     nicknameRef.current.focus();
   }, []);
   // 추가
+
   const onAddSubmit = (e) => {
     e.preventDefault();
 
@@ -49,15 +50,21 @@ const FormAdd = ({ tab, tabData, setLetterValue }) => {
     }
 
     setLetterValue((prevValue) => {
-      localStorage.setItem(
-        writedTo,
-        JSON.stringify([{ ...addValue }, ...prevValue])
-      );
       return [{ ...addValue }, ...prevValue];
     });
+
     reset();
     nicknameRef.current.focus();
   };
+  // const updateArr = [{ ...addValue }, ...prevValue].filter(
+  //   (stayLetter) => stayLetter.writedTo === clickTabWritedTo
+  //   // (stayLetter) => stayLetter.writedTo === writedTo
+  // );
+  // console.log(updateArr);
+  // localStorage.setItem(
+  //   clickTabWritedTo,
+  //   JSON.stringify([addValue, ...prevValue])
+  // );
 
   return (
     <section>

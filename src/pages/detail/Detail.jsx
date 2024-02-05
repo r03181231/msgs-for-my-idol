@@ -7,12 +7,10 @@ const Detail = ({ tab, letterValue, setLetterValue }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const tabName = tab.writedTo;
-
-  const filterThisCard = letterValue.filter(
-    (data) => data.id === id && data.writedTo === tabName
-  );
-
+  const storageItem = JSON.parse(localStorage.getItem(tabName));
+  console.log({ storageItem: storageItem });
   const [isEdit, setIsEdit] = useState(false); // 수정 상태 , 저장
+  const thisLetter = letterValue.filter((data) => data.id === id);
 
   const moveNavigator = () => {
     navigate("/", { replace: true });
@@ -31,15 +29,17 @@ const Detail = ({ tab, letterValue, setLetterValue }) => {
       return;
     }
 
-    const dataArr = letterValue.filter((stayTodo) => stayTodo.id !== clickId);
+    const dataArr = letterValue.filter(
+      (stayletter) => stayletter.id !== clickId
+    );
     setLetterValue(dataArr);
     moveNavigator();
   };
 
   return (
     <>
-      {filterThisCard && filterThisCard.length > 0 ? (
-        filterThisCard.map((filterData) => {
+      {thisLetter && thisLetter.length > 0 ? (
+        thisLetter.map((filterData) => {
           const { id, avatar, nickname, writedTo, content, createdAt } =
             filterData;
           return (
@@ -65,11 +65,11 @@ const Detail = ({ tab, letterValue, setLetterValue }) => {
                   </p>
                 </ul>
                 {!isEdit ? (
-                  <>
+                  <div>
                     <p>{content}</p>
                     <Button name={"수정"} onClick={onEdit} />
                     <Button name={"삭제"} onClick={() => onDelete(id)} />
-                  </>
+                  </div>
                 ) : (
                   <EditDetail
                     setIsEdit={setIsEdit}

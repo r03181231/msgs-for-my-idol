@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as S from "./StyledTabMenu";
 
 const TabMenu = ({ tabData, setTab }) => {
-  const [activeTab, setActiveTab] = useState(tabData[0]);
+  const [activeTab, setActiveTab] = useState({ tabNum: 1, writedTo: "정승환" });
 
   const onClickTabChange = (tabInfomation) => {
     setTab(tabInfomation);
@@ -12,15 +12,14 @@ const TabMenu = ({ tabData, setTab }) => {
   return (
     <S.Nav>
       <S.UlArtistName>
-        {tabData.map((sortTab) => {
-          const { tabNum, writedTo } = sortTab;
-
+        {tabData.map((tabItem) => {
+          const { tabNum, writedTo } = tabItem;
           return (
             <S.Li
               id={tabNum}
               $isactive={activeTab.tabNum}
               key={tabNum}
-              onClick={() => onClickTabChange(sortTab)}
+              onClick={() => onClickTabChange(tabItem)}
             >
               {writedTo}
             </S.Li>

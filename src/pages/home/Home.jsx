@@ -7,7 +7,6 @@ const Home = ({ letterValue, setLetterValue, tab, setTab, tabData }) => {
   const writeToName = tab.writedTo;
 
   const filterWritedTo = (writedTo) => {
-    console.log(letterValue);
     return letterValue.filter((letterItem) => letterItem.writedTo === writedTo);
   };
 
@@ -22,7 +21,6 @@ const Home = ({ letterValue, setLetterValue, tab, setTab, tabData }) => {
           tab.writedTo === writedTo && (
             <div key={tabNum}>
               <FormAdd
-                writeToName={writeToName}
                 tab={tab}
                 tabData={tabData}
                 setLetterValue={setLetterValue}

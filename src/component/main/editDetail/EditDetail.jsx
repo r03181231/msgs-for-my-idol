@@ -30,14 +30,14 @@ const EditDetail = ({ setIsEdit, filterData, letterValue, setLetterValue }) => {
       return;
     }
 
-    const editData = letterValue.map((prevData) => {
-      if (prevData.id === id) {
+    const editData = letterValue.map((letter) => {
+      if (letter.id === id) {
         return {
-          ...prevData,
+          ...letter,
           content: editValueContent,
         };
       }
-      return prevData;
+      return letter;
     });
 
     setLetterValue(editData);
@@ -58,8 +58,10 @@ const EditDetail = ({ setIsEdit, filterData, letterValue, setLetterValue }) => {
         value={editValueContent}
         onChange={onChange}
       ></textarea>
-      <Button name={"취소"} onClick={onEditCancel} />
-      <Button name={"수정완료"} onClick={onEditSave} />
+      <div>
+        <Button name={"취소"} onClick={onEditCancel} />
+        <Button name={"수정완료"} onClick={onEditSave} />
+      </div>
     </div>
   );
 };

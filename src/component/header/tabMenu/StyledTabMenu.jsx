@@ -19,11 +19,9 @@ export const UlArtistName = styled.ul`
   border-radius: 1rem;
 
   gap: 10px;
-  /* 가수이름 */
 `;
 
 export const Li = styled.li`
-  /* background-color: #333; */
   padding: 10px;
 
   border-radius: 0.6rem;
@@ -35,7 +33,4 @@ export const Li = styled.li`
     background-color: #f5f593;
     color: #333;
   }
-  /* &:active {
-    background-color: #f5f593;
-  } */
 `;

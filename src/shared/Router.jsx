@@ -24,21 +24,23 @@ const Router = () => {
     },
   ];
   const [tab, setTab] = useState(tabData[0]);
+  const [letterValue, setLetterValue] = useState(dummyData);
 
-  useEffect(() => {
-    const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
-    if (storageItem) {
-      setLetterValue(storageItem);
-    } else {
-      setLetterValue(dummyData);
-    }
-  }, [tab.writedTo]);
+  // useEffect(() => {
+  //   const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
+  //   if (storageItem) {
+  //     setLetterValue(storageItem);
+  //   } else {
+  //     setLetterValue(dummyData);
+  //   }
+  // }, [tab.writedTo]);
 
-  const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
-  const [letterValue, setLetterValue] = useState(storageItem || dummyData);
-  useEffect(() => {
-    localStorage.setItem(tab.writedTo, JSON.stringify(letterValue || []));
-  }, [tab.writedTo, letterValue]);
+  // const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
+  // const [letterValue, setLetterValue] = useState(storageItem || dummyData);
+  // const [letterValue, setLetterValue] = useState(dummyData || []);
+  // useEffect(() => {
+  //   localStorage.setItem(tab.writedTo, JSON.stringify(letterValue || []));
+  // }, [tab.writedTo, letterValue]);
   return (
     <>
       <BrowserRouter>
@@ -66,7 +68,7 @@ const Router = () => {
               />
             }
           />
-          <Route path="*" element={<Navigate replace to="/" />} />
+          {/* <Route path="*" element={<Navigate replace to="/" />} /> */}
         </Routes>
       </BrowserRouter>
     </>

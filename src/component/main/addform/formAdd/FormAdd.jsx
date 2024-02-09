@@ -8,21 +8,20 @@ import Button from "component/common/button/Button";
 const FormAdd = () => {
   const normalAvataUrl =
     "https://lh7-us.googleusercontent.com/MyS-PhOT-AvaQtCYXsr0oQPxakqvdc-s-QFcNZmCwd19fbYditWA_IwxeepE78dANxt04nEws75hrFfmqNuhJLx2EQxy_RSe8x6M7LcHGVjhzEkSpREFDhWljam2mdGNxes5xqoxP1sZpYijy3nTTXU";
-  const { setLetterValue, tab, tabData, letterValue } =
-    useContext(LetterContext);
+  const { setLetterValue, tab, blankPattern, time } = useContext(LetterContext);
   const nicknameRef = useRef(null);
   const contentRef = useRef(null);
-  const blankPattern = /^\s+|\s+$/g;
-  let time = new Date().toISOString();
-  const [addValue, setAddValue, onChange, reset] = useInputs({
+  const init = {
     id: randomId(),
     nickname: "",
     avatar: normalAvataUrl,
     content: "",
     writedTo: tab.writedTo,
     createdAt: time,
-  });
-  const { nickname, content, writedTo } = addValue;
+  };
+  const [addValue, setAddValue, onChange, reset] = useInputs(init);
+  const { nickname, content } = addValue;
+
   const nicknameBlank = nickname.replace(blankPattern, "");
   const contentBlank = content.replace(blankPattern, "");
   // input 포커스
@@ -51,13 +50,6 @@ const FormAdd = () => {
     }
 
     setLetterValue((prevValue) => {
-      const filterletter = prevValue.filter(
-        (stayletter) => stayletter.writedTo === writedTo
-      );
-      localStorage.setItem(
-        writedTo,
-        JSON.stringify([{ ...addValue }, ...filterletter])
-      );
       return [{ ...addValue }, ...prevValue];
     });
     reset();
@@ -93,11 +85,7 @@ const FormAdd = () => {
             onChange={onChange}
           />
         </div>
-        <FormSelect
-          tabData={tabData}
-          addValue={addValue}
-          setAddValue={setAddValue}
-        />
+        <FormSelect tab={tab} addValue={addValue} setAddValue={setAddValue} />
         <div>
           <Button name={"등록"} />
         </div>

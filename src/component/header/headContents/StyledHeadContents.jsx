@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import bgImage from "../../../assets/images/anthena-angels.png";
 
 export const Header = styled.header`
   width: 100%;
-  height: 40rem;
+  height: 80rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,15 +14,22 @@ export const Header = styled.header`
 
   border: 1px solid gray;
 
-  background-image: url("https://lh7-us.googleusercontent.com/oEaLirMozS3UxdsQGllaE5qf8kYvZklDDLMO58ANP3uRh2ZAy9FJNzIKQ4_FzIRhMzXovU4Wxx24RrZKvoGzQZiVbs-vptgfTBVtFirqWjMLgjk1EXt5l-EBCtyyFNH3FMDSgm3DoM3fAy2dCCFkAXE");
+  background-image: url(${bgImage});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   object-fit: cover;
 
   gap: 20px;
 
   h1 {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 0.8rem;
+
+    border-radius: 2rem;
+
+    font-size: 2rem;
+    font-weight: 900;
     text-align: center;
   }
 `;

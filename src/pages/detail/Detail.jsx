@@ -8,13 +8,11 @@ import Button from "component/common/button/Button";
 const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { letterValue, setLetterValue, tab } = useContext(LetterContext);
-  const tabName = tab.writedTo;
+  const { letterValue, setLetterValue } = useContext(LetterContext);
   const [isEdit, setIsEdit] = useState(false); // 수정 상태 , 저장
   const filterThisCard = letterValue.filter((data) => data.id === id);
 
   const moveNavigator = () => {
-    // navigate("/");
     navigate("/", { replace: true });
   };
 
@@ -78,7 +76,13 @@ const Detail = () => {
           );
         })
       ) : (
-        <>그래도 이게 뜨면 안 되지..</>
+        <div>
+          <Button name={"◀ 홈화면"} onClick={moveNavigator} />
+          <p>
+            정보를 받아오는 중에 문제가 생겼습니다. 홈화면으로 이동해서 새로고침
+            해주세요!
+          </p>
+        </div>
       )}
     </>
   );

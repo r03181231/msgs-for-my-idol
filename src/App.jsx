@@ -29,9 +29,9 @@ const App = () => {
   ];
 
   const [tab, setTab] = useState(tabData[0]);
-  // const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
   const [letterValue, setLetterValue] = useState(dummyData);
-  // const [letterValue, setLetterValue] = useState(storageItem || dummyData);
+  const blankPattern = /^\s+|\s+$/g;
+  let time = new Date().toISOString();
   const value = {
     tabData,
     tab,
@@ -39,19 +39,9 @@ const App = () => {
     letterValue,
     setLetterValue,
     dummyData,
+    blankPattern,
+    time,
   };
-  // useEffect(() => {
-  //   const storageItem = JSON.parse(localStorage.getItem(tab.writedTo));
-  //   if (storageItem) {
-  //     setLetterValue(storageItem);
-  //   } else {
-  //     setLetterValue(dummyData);
-  //   }
-  // }, [tab.writedTo]);
-
-  // useEffect(() => {
-  //   localStorage.setItem(tab.writedTo, JSON.stringify(letterValue));
-  // }, [tab.writedTo, letterValue]);
 
   return (
     <>
